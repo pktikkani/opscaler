@@ -1,0 +1,119 @@
+@import 'tailwindcss';
+@import './base.css';
+
+/* Auto dark mode via system preference using Tailwind's dark variant */
+@custom-variant dark (&:where(.dark, .dark *));
+
+.dark {
+  color-scheme: dark;
+}
+
+@theme {
+  --text-*: initial;
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1rem;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.5rem;
+  --text-base: 1rem;
+  --text-base--line-height: 1.75rem;
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.75rem;
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 2rem;
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 2.25rem;
+  --text-3xl: 1.75rem;
+  --text-3xl--line-height: 2.25rem;
+  --text-4xl: 2rem;
+  --text-4xl--line-height: 2.5rem;
+  --text-5xl: 2.5rem;
+  --text-5xl--line-height: 3rem;
+  --text-6xl: 3rem;
+  --text-6xl--line-height: 3.5rem;
+  --text-7xl: 4rem;
+  --text-7xl--line-height: 4.5rem;
+  --text-8xl: 5rem;
+  --text-8xl--line-height: 5.5rem;
+
+  --radius-4xl: 2.5rem;
+
+  --font-sans:
+    'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --font-display:
+    'Satoshi', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --font-mono:
+    'JetBrains Mono', ui-monospace, 'Fira Code', monospace;
+
+  --font-display--font-variation-settings: normal;
+
+  /* Custom colors */
+  --color-bg-primary: #FAFAFA;
+  --color-bg-secondary: #FFFFFF;
+  --color-bg-tertiary: #F5F5F5;
+  --color-surface: #FFFFFF;
+  --color-accent: #5746EC;
+  --color-accent-hover: #4636D6;
+  --color-accent-subtle: rgba(87,70,236,0.08);
+  --color-accent-text: #5746EC;
+}
+
+/* ---- LIGHT MODE DEFAULTS ---- */
+:root {
+  --bg-primary: #FAFAFA;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #F5F5F5;
+  --bg-elevated: #FFFFFF;
+  --border-color: rgba(0,0,0,0.06);
+  --border-hover: rgba(0,0,0,0.12);
+  --text-primary: #0C0C0D;
+  --text-secondary: #52525B;
+  --text-tertiary: #A1A1AA;
+  --accent: #5746EC;
+  --accent-hover: #4636D6;
+  --accent-subtle: rgba(87,70,236,0.08);
+  --accent-text: #5746EC;
+  --accent-glow: rgba(87,70,236,0.04);
+}
+
+/* ---- DARK MODE ---- */
+.dark {
+  --bg-primary: #09090B;
+  --bg-secondary: #0F0F12;
+  --bg-tertiary: #18181B;
+  --bg-elevated: #1C1C20;
+  --border-color: rgba(255,255,255,0.06);
+  --border-hover: rgba(255,255,255,0.12);
+  --text-primary: #FAFAFA;
+  --text-secondary: #A1A1AA;
+  --text-tertiary: #52525B;
+  --accent: #7C6EF6;
+  --accent-hover: #9183F7;
+  --accent-subtle: rgba(124,110,246,0.1);
+  --accent-text: #A899FF;
+  --accent-glow: rgba(124,110,246,0.06);
+}
+
+/* Utility classes for the design system */
+.bg-site { background-color: var(--bg-primary); }
+.bg-surface { background-color: var(--bg-secondary); }
+.bg-elevated { background-color: var(--bg-tertiary); }
+.text-site { color: var(--text-primary); }
+.text-muted { color: var(--text-secondary); }
+.text-dim { color: var(--text-tertiary); }
+.text-accent { color: var(--accent-text); }
+.bg-accent { background-color: var(--accent); }
+.bg-accent-subtle { background-color: var(--accent-subtle); }
+.border-site { border-color: var(--border-color); }
+.border-site-hover { border-color: var(--border-hover); }
+.hover\:bg-elevated:hover { background-color: var(--bg-tertiary); }
+
+/* Focus ring */
+.focus-accent:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-subtle);
+}
