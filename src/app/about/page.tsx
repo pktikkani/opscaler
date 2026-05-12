@@ -1,4 +1,5 @@
 import { type Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { SiteLayout } from '@/components/SiteLayout'
@@ -10,11 +11,13 @@ const founders = [
     name: 'Pavan Tikkani',
     role: 'Co-Founder',
     bio: 'Nearly two decades in global technology. Known for simplifying complex challenges and an unwavering passion for clean, elegant code. Deep expertise across established and cutting-edge tech stacks.',
+    image: '/team/pavan.png',
   },
   {
     name: 'Karthik Sethupathy',
     role: 'Co-Founder',
     bio: 'Seasoned technologist with deep expertise in cloud infrastructure, AWS, and enterprise-grade SaaS. Built his career across leading Bay Area tech companies. Sharp, detail-oriented approach to complex infrastructure challenges.',
+    image: null,
   },
 ]
 
@@ -84,11 +87,36 @@ export default function About() {
                   className="rounded-2xl border p-8"
                   style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border-color)' }}
                 >
-                  <h3 className="font-display text-xl font-bold">{person.name}</h3>
-                  <p className="mt-1 text-sm font-medium" style={{ color: 'var(--accent-text)' }}>
-                    {person.role}
-                  </p>
-                  <p className="mt-4 text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                  <div className="flex items-center gap-5">
+                    <div
+                      className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full border"
+                      style={{ borderColor: 'var(--border-color)', background: 'var(--bg-primary)' }}
+                    >
+                      {person.image ? (
+                        <Image
+                          src={person.image}
+                          alt={person.name}
+                          fill
+                          sizes="80px"
+                          className="object-cover"
+                        />
+                      ) : (
+                        <div
+                          className="flex h-full w-full items-center justify-center font-display text-2xl font-bold"
+                          style={{ color: 'var(--text-secondary)' }}
+                        >
+                          {person.name.split(' ').map((n) => n[0]).join('')}
+                        </div>
+                      )}
+                    </div>
+                    <div>
+                      <h3 className="font-display text-xl font-bold">{person.name}</h3>
+                      <p className="mt-1 text-sm font-medium" style={{ color: 'var(--accent-text)' }}>
+                        {person.role}
+                      </p>
+                    </div>
+                  </div>
+                  <p className="mt-5 text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                     {person.bio}
                   </p>
                 </div>
