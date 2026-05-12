@@ -17,7 +17,7 @@ const founders = [
     name: 'Karthik Sethupathy',
     role: 'Co-Founder',
     bio: 'Seasoned technologist with deep expertise in cloud infrastructure, AWS, and enterprise-grade SaaS. Built his career across leading Bay Area tech companies. Sharp, detail-oriented approach to complex infrastructure challenges.',
-    image: null,
+    image: '/team/karthik.png',
   },
 ]
 
