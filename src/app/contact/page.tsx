@@ -133,11 +133,12 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>
-                    Follow us
+                    Connect
                   </h3>
                   <div className="mt-2 flex gap-4">
                     {[
                       { label: 'GitHub', href: 'https://github.com/pktikkani' },
+                      { label: 'LinkedIn', href: 'https://www.linkedin.com/company/132384119/' },
                     ].map((s) => (
                       <Link
                         key={s.label}

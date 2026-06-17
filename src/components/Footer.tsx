@@ -25,6 +25,7 @@ const footerLinks = [
     title: 'Connect',
     links: [
       { label: 'GitHub', href: 'https://github.com/pktikkani' },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/company/132384119/' },
     ],
   },
 ]
