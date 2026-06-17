@@ -72,7 +72,7 @@ export function Footer() {
             &copy; {new Date().getFullYear()} OpScaler LLC &mdash; Delaware, US
           </p>
           <p className="text-xs" style={{ color: 'var(--text-tertiary)' }}>
-            hello@opscaler.com
+            30 N Gould St Ste #65050, Sheridan, WY 82801, US
           </p>
         </div>
       </Container>

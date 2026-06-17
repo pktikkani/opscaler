@@ -91,6 +91,29 @@ function RadioGroup({
 
 export default function Contact() {
   const [isPending, setIsPending] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    const form = event.currentTarget
+    const data = Object.fromEntries(new FormData(form).entries())
+    setIsPending(true)
+    setStatus('idle')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+      if (!res.ok) throw new Error('Request failed')
+      form.reset()
+      setStatus('success')
+    } catch {
+      setStatus('error')
+    } finally {
+      setIsPending(false)
+    }
+  }
 
   return (
     <SiteLayout>
@@ -113,22 +136,10 @@ export default function Contact() {
               <div className="mt-12 space-y-8">
                 <div>
                   <h3 className="text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>
-                    Email
-                  </h3>
-                  <Link
-                    href="mailto:hello@opscaler.com"
-                    className="mt-2 block text-sm font-medium transition-colors hover:underline"
-                    style={{ color: 'var(--text-secondary)' }}
-                  >
-                    hello@opscaler.com
-                  </Link>
-                </div>
-                <div>
-                  <h3 className="text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>
                     Location
                   </h3>
                   <p className="mt-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
-                    Delaware, United States
+                    30 N Gould St Ste #65050,<br />Sheridan, WY 82801, US
                   </p>
                 </div>
                 <div>
@@ -156,16 +167,7 @@ export default function Contact() {
 
             {/* Form */}
             <FadeIn>
-              <form
-                action="https://api.web3forms.com/submit"
-                method="POST"
-                onSubmit={() => setIsPending(true)}
-                className="space-y-5"
-              >
-                <input type="hidden" name="access_key" value={process.env.NEXT_PUBLIC_WEB3FORMS_KEY} />
-                <input type="hidden" name="subject" value="New Contact - OpScaler" />
-                <input type="hidden" name="from_name" value="OpScaler Website" />
-
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <TextInput label="Name" name="name" autoComplete="name" required disabled={isPending} placeholder="Jane Smith" />
                 <TextInput label="Email" name="email" type="email" autoComplete="email" required disabled={isPending} placeholder="jane@startup.com" />
                 <TextInput label="Company" name="company" autoComplete="organization" disabled={isPending} placeholder="Acme Inc." />
@@ -190,6 +192,17 @@ export default function Contact() {
                 >
                   {isPending ? 'Sending...' : 'Send message \u2192'}
                 </button>
+
+                {status === 'success' && (
+                  <p className="text-sm" style={{ color: 'var(--accent-text)' }}>
+                    Thanks &mdash; we got your message and will reply within 24 hours.
+                  </p>
+                )}
+                {status === 'error' && (
+                  <p className="text-sm" style={{ color: '#ef4444' }}>
+                    Something went wrong. Please try again or email us directly.
+                  </p>
+                )}
               </form>
             </FadeIn>
           </div>

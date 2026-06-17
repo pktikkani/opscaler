@@ -48,13 +48,11 @@ const organizationJsonLd = {
   ],
   address: {
     '@type': 'PostalAddress',
-    addressRegion: 'Delaware',
+    streetAddress: '30 N Gould St Ste #65050',
+    addressLocality: 'Sheridan',
+    addressRegion: 'WY',
+    postalCode: '82801',
     addressCountry: 'US',
-  },
-  contactPoint: {
-    '@type': 'ContactPoint',
-    email: 'hello@opscaler.com',
-    contactType: 'customer service',
   },
   areaServed: 'United States',
 }
