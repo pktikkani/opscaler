@@ -24,9 +24,7 @@ const footerLinks = [
   {
     title: 'Connect',
     links: [
-      { label: 'LinkedIn', href: 'https://linkedin.com/company/opscaler' },
-      { label: 'GitHub', href: 'https://github.com/opscaler' },
-      { label: 'X / Twitter', href: 'https://x.com/opscaler' },
+      { label: 'GitHub', href: 'https://github.com/pktikkani' },
     ],
   },
 ]

@@ -137,9 +137,7 @@ export default function Contact() {
                   </h3>
                   <div className="mt-2 flex gap-4">
                     {[
-                      { label: 'LinkedIn', href: 'https://linkedin.com/company/opscaler' },
-                      { label: 'GitHub', href: 'https://github.com/opscaler' },
-                      { label: 'X', href: 'https://x.com/opscaler' },
+                      { label: 'GitHub', href: 'https://github.com/pktikkani' },
                     ].map((s) => (
                       <Link
                         key={s.label}
