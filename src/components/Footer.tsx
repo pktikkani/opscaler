@@ -69,7 +69,7 @@ export function Footer() {
           style={{ borderColor: 'var(--border-color)' }}
         >
           <p className="text-xs" style={{ color: 'var(--text-tertiary)' }}>
-            &copy; {new Date().getFullYear()} OpScaler LLC &mdash; Delaware, US
+            &copy;{' '}{new Date().getFullYear()}{' '}OpScaler LLC &mdash; Wyoming, US
           </p>
           <p className="text-xs" style={{ color: 'var(--text-tertiary)' }}>
             30 N Gould St Ste #65050, Sheridan, WY 82801, US
