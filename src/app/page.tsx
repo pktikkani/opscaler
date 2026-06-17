@@ -113,8 +113,10 @@ export default function Home() {
                   <div
                     className="font-display text-3xl font-black tracking-tight"
                     style={{
-                      background: 'linear-gradient(135deg, var(--text-primary), var(--accent-text))',
+                      backgroundImage: 'linear-gradient(135deg, var(--text-primary), var(--accent-text))',
+                      backgroundClip: 'text',
                       WebkitBackgroundClip: 'text',
+                      color: 'transparent',
                       WebkitTextFillColor: 'transparent',
                     }}
                   >
