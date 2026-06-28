@@ -261,16 +261,16 @@ export const caseStudies: CaseStudy[] = [
     client: 'Document-generation AI application for a regulated life-sciences / CDMO workflow',
     category: 'AI & Machine Learning',
     summary:
-      'A long-form document-generation app defaulted every run to a premium frontier model. Parallel section generation, model right-sizing, quality-gated fallback, and caching cut model cost ~70% and latency ~64% — with quality held at 0.85–1.0 parity, verified by an independent judge.',
+      'A long-form document-generation app defaulted every run to a premium frontier model. Right-sizing the default model plus parallel section generation cut model cost ~70% and end-to-end latency ~64% — with quality held at ≥0.85 parity (up to 1.0) on the production configuration, verified by an independent judge.',
     goal: 'Reduce inference cost and latency for an LLM-powered long-document generator without losing output quality — by testing the untested assumption that the frontier model was required.',
     outcome:
-      'Moving the default off the premium frontier model to a mid-tier model — alongside parallel section generation, a quality-gated fallback, and caching — cut model spend ~70% and end-to-end latency ~64% (39.1 s → 14.2 s), with semantic parity of 0.85–1.0 against the premium baseline.',
+      'Moving the default off the premium frontier model to a right-sized mid-tier model cut model spend ~70%; parallel section generation cut end-to-end latency ~64% (39.1 s → 14.2 s, mean of a six-workflow benchmark) and is provider-agnostic — it holds regardless of which model is used. Semantic parity against the premium baseline held at ≥0.85 (up to 1.0) on the production configuration.',
     status: 'Implemented and benchmarked in production-representative testing.',
     date: 'Jun 2026',
     stats: [
-      { value: '~70%', label: 'Lower model cost (blended toward cheap tier)' },
-      { value: '~64%', label: 'Faster generation (39.1 s → 14.2 s)' },
-      { value: '0.85–1.0', label: 'Semantic parity vs premium baseline' },
+      { value: '~70%', label: 'Lower model cost (premium → right-sized mid-tier)' },
+      { value: '~64%', label: 'Faster via parallelism (39.1 s → 14.2 s, n=6 mean)' },
+      { value: '≥0.85', label: 'Semantic parity vs premium (up to 1.0)' },
       { value: 'Independent', label: 'Quality gated by a separate judge, not the team' },
     ],
     sections: [
@@ -288,10 +288,10 @@ export const caseStudies: CaseStudy[] = [
           'We treated both how we call the model and which model we call as engineering optimizations, not defaults.',
         ],
         bullets: [
-          'Parallel section generation. A long document is many independent sections. The first version generated them serially, so total latency was the sum of every section. We restructured the pipeline to generate sections concurrently, bounded by a configurable concurrency limit (an async semaphore), with partial-failure salvage so one slow or failed section never sinks the whole document. Wall-clock time dropped to roughly the slowest section instead of the sum — the single biggest latency win, and provider-agnostic.',
-          'Model right-sizing (tiering). Benchmark cheaper models on the actual task instead of assuming the premium model is mandatory. Establish the premium model’s output as the quality baseline, then measure how close cheaper models land.',
-          'Quality-gated fallback. Run the small/cheap model first; promote to a mid-tier model only when a deterministic quality check on the output fails. Most generations clear on the cheap model; only the hard ones pay for a larger model. Cost follows difficulty, not a flat premium rate.',
-          'Response caching. Cache deterministic upstream stages and stable sub-results so repeated and near-repeated work is not re-billed to the model on every run.',
+          'Parallel section generation. A long document is many independent sections. The first version generated them serially, so total latency was the sum of every section. We restructured the pipeline to generate sections concurrently, bounded by a configurable concurrency limit (an async semaphore), with partial-failure salvage so one slow or failed section never sinks the whole document. Wall-clock time dropped to roughly the slowest section instead of the sum — the single biggest latency win, and entirely provider-agnostic: it holds no matter which model you run.',
+          'Model right-sizing (tiering). Benchmark cheaper models on the actual task instead of assuming the premium model is mandatory. Establish the premium model’s output as the quality baseline, measure how close cheaper models land, then make the right-sized tier the default. This is the lever that drives the ~70% cost reduction.',
+          'Quality-gated regeneration. The right-sized model is the default; a deterministic quality check runs on its output, and only outputs that fail the check are regenerated. Spend follows difficulty — the hard cases get extra compute, the rest clear on the first pass — rather than paying a flat premium rate on every run.',
+          'Compute-once upstream stages. Deterministic upstream work (scope classification, scaffolding, costing) is computed once and passed forward as context rather than re-derived per section, keeping repeated work out of the model’s billing path.',
         ],
       },
       {
@@ -303,7 +303,7 @@ export const caseStudies: CaseStudy[] = [
       {
         heading: 'The results — cost',
         paragraphs: [
-          'All numbers are from our six-workflow, multi-scope benchmark. For an output-heavy long document, moving the default off the premium model to the mid-tier cut model spend by roughly 70%; workloads that safely ran on the small model dropped by nearly 99%. With the quality-gated fallback, the blended cost sits near the cheap tier because only a minority of generations escalate.',
+          'All numbers are from our six-workflow, multi-scope benchmark (means over the run). For an output-heavy long document, moving the default off the premium model to the right-sized mid-tier cut model spend by roughly 70%; workloads that safely run on the small model drop by nearly 99%. The cost reduction comes from the default-tier change; the quality-gated regeneration only adds compute on the minority of outputs that fail the deterministic check.',
         ],
         table: {
           columns: ['Tier', 'Input $/1M', 'Output $/1M', 'Output-cost vs premium'],
@@ -317,7 +317,7 @@ export const caseStudies: CaseStudy[] = [
       {
         heading: 'The results — latency',
         paragraphs: [
-          'The mid-tier model was not only cheaper — it was ~64% faster (39.1 s → 14.2 s), turning a sluggish interactive flow into a responsive one. Two effects stack: the mid-tier model returns faster per call, and parallel section generation collapses many sequential calls into one concurrent batch — so the document no longer waits on the sum of its sections, only on the slowest one.',
+          'End-to-end generation dropped ~64% (39.1 s → 14.2 s, mean of the six-workflow benchmark), turning a sluggish interactive flow into a responsive one. Two effects stack here: the right-sized model returns faster per call, and — the durable, model-independent win — parallel section generation collapses many sequential calls into one bounded concurrent batch, so the document waits on its slowest section instead of the sum of all of them. The parallelism win holds regardless of which model is used; it is the engineering, not the model choice.',
         ],
         table: {
           columns: ['Tier', 'Avg end-to-end latency'],
@@ -332,8 +332,8 @@ export const caseStudies: CaseStudy[] = [
         heading: 'The results — quality held',
         bullets: [
           'Deterministic checks: the cheaper tiers matched the premium model’s structural quality on the benchmark (identical pass profile on the scored set).',
-          'Semantic parity vs the premium baseline (independent judge, 0–1 scale): 0.85 mean, ranging up to 1.0 on multiple cases. The cheaper model’s documents were judged substantively equivalent to the premium model’s the large majority of the time — and where they diverged, the quality-gated fallback caught it and escalated.',
-          'Net effect: ~70% lower model cost (blended toward the cheap tier with fallback), ~64% faster generation, with output quality held at ~0.85–1.0 parity against the original premium model — verified by an independent judge, not by the team that built it.',
+          'Semantic parity vs the premium baseline (independent judge, 0–1 scale): ≥0.85 on the production configuration, ranging up to 1.0 on multiple cases. The right-sized model’s documents were judged substantively equivalent to the premium model’s the large majority of the time — and where an output diverged, the deterministic quality check caught it and triggered regeneration.',
+          'Net effect: ~70% lower model cost (premium → right-sized default), ~64% faster generation (parallelism, provider-agnostic), with output quality held at ≥0.85 parity (up to 1.0) against the original premium model — verified by an independent judge, not by the team that built it.',
         ],
       },
       {
@@ -341,8 +341,8 @@ export const caseStudies: CaseStudy[] = [
         bullets: [
           'Serial generation was the hidden latency tax. Generating independent sections one after another made total time the sum of every call. Concurrency made it the slowest call — same model, same output, dramatically less waiting.',
           'The default model was the expensive mistake. The single biggest cost lever was an untested assumption (“we need the frontier model”). Measuring it was cheaper than paying for it.',
-          'Difficulty-proportional spend beats flat-rate. Quality-gated fallback means you only pay frontier prices for the inputs that genuinely need it — typically a minority.',
-          'Caching compounds. Deterministic and repeated work should never hit the model twice — free money once the boundaries are clean.',
+          'Difficulty-proportional spend beats flat-rate. A quality-gated regeneration adds compute only on outputs that fail a deterministic check — typically a minority — instead of paying a premium rate on every run.',
+          'Compute deterministic work once. Upstream stages that don’t need the model (scope classification, scaffolding, costing) should be derived once and passed forward as context, not recomputed per section.',
           'Trust requires independent verification. Cost and latency wins are only real if an independent quality gate confirms output didn’t degrade — so the savings are defensible to a customer, not just to ourselves.',
         ],
       },
@@ -352,11 +352,11 @@ export const caseStudies: CaseStudy[] = [
           'For any LLM-powered application that generates multi-part output and defaults to a premium model:',
         ],
         bullets: [
-          'Parallelize independent calls. If your output has independent sections/units, generate them concurrently (bounded by a semaphore) with partial-failure salvage. Latency goes from sum-of-calls to slowest-call — the biggest, most provider-agnostic win.',
+          'Parallelize independent calls. If your output has independent sections/units, generate them concurrently (bounded by a semaphore) with partial-failure salvage. Latency goes from sum-of-calls to slowest-call — the biggest, most provider-agnostic win, and it survives any future model change.',
           'Baseline the premium model’s output on your real task and freeze it as the quality reference.',
-          'Benchmark cheaper tiers against that baseline on cost, latency, and an independent quality score — not vibes.',
-          'Add a quality-gated fallback: cheap model first, escalate only on a failed deterministic check.',
-          'Cache every deterministic / repeated stage out of the model’s billing path.',
+          'Benchmark cheaper tiers against that baseline on cost, latency, and an independent quality score — not vibes — then make the right-sized tier the default.',
+          'Add a quality-gated regeneration: run the default tier, and regenerate only the outputs that fail a deterministic check.',
+          'Compute deterministic / repeated upstream stages once and pass them as context, out of the model’s billing path.',
           'Gate every saving behind an independent evaluator so quality parity is provable.',
         ],
       },
