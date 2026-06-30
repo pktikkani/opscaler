@@ -11,6 +11,7 @@ const links = [
   { href: '/services', label: 'Services' },
   { href: '/process', label: 'Process' },
   { href: '/case-studies', label: 'Case Studies' },
+  { href: '/inference-log', label: 'Inference Log' },
 ]
 
 export function Navbar() {
