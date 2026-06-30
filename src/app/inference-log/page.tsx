@@ -8,10 +8,10 @@ import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 export const metadata: Metadata = {
   title: 'The Inference Log',
   description:
-    'Down to the metal. A few years of it. The real AI we have shipped across OpScaler and Prag-Matic — voice agents on the critical path, on-prem vision, document intelligence, and hand-written inference engines.',
+    "A few years of it. The real AI we've shipped at OpScaler — voice agents that take the payment, document intelligence people actually use, generative imagery, agent swarms, and the whole agent loop running on your own hardware.",
   openGraph: {
     title: 'The Inference Log — OpScaler',
-    description: 'Down to the metal. A few years of it.',
+    description: "We've shipped AI for years. Here's the log.",
   },
 }
 
@@ -19,123 +19,158 @@ export const metadata: Metadata = {
 
 const capabilities = [
   {
-    eyebrow: 'voice_ai',
-    headline: 'It takes the call. And the payment.',
-    body: 'Most voice AI collapses the moment a real transaction shows up. Ours was built for the part everyone else routes to a human — authentication, payments, fraud disputes, multilingual callers, sub-second responsiveness. Deploy it in your cloud, or fully on your own hardware.',
+    eyebrow: 'voice that closes the loop',
+    headline: 'Voice agents that actually take the payment',
+    body: "Not a hotline that reads a menu. A real agent that authenticates the caller, takes the card payment, works the fraud case, switches languages mid-call, and hands off to a human only where the regulator says it has to. We've built the full stack — telephony, ASR, function-calling, web search, TTS — and the safety rails to go with it.",
     proof: [
-      'Muscat Finance — a heavily automated credit-card service line: the AI authenticates the caller, takes payments, and handles fraud cases, with human escalation only where the regulator requires it',
-      'Aura on Pipecat + Deepgram + ElevenLabs with live function-calling; Auralis on LiveKit with self-hosted XTTS v2 voices',
-      'Pipecat Local — on-device STT and TTS, no frame leaves the machine',
-      'Recapture — Teams, Zoom, and web meeting bots, GPU transcription, Claude + WhisperX on Temporal',
+      'Automated a credit-card service line end to end: auth, payments, fraud, multilingual',
+      'Aura on Pipecat + Deepgram + ElevenLabs with function-calling and live web search',
+      'Auralis on LiveKit with self-hosted XTTS v2 — your voice stack, your box',
+      'A voice safety harness that routes 4/4 crisis categories to a human and never validates a delusion',
     ],
   },
   {
-    eyebrow: 'document_intelligence',
-    headline: 'It reads the way you read. Charts included.',
-    body: 'Your contracts, invoices, resumes, decks, and scans — answered in plain language, including the tables, charts, and layout most pipelines flatten and lose. Retrieval tuned against measured accuracy, not shipped blind.',
+    eyebrow: 'meetings, transcribed and understood',
+    headline: 'Conversational and meeting assistants',
+    body: "Bots that join Teams, Zoom, and web calls, transcribe on GPU in real time, and turn an hour of talk into something you can act on. Built on durable workflows so a dropped frame or a flaky network doesn't lose the meeting.",
     proof: [
-      'Knova — a document-intelligence app, API, and Knova-Forge: a GenAI pipeline-optimization platform on DSPy and DeepEval',
-      'Harvestor — visual document search on ColQwen2.5 late-interaction retrieval, backed by LanceDB',
-      'HireMagic — Mistral structured extraction of resumes and invoices',
-      'A late-interaction stack — ColPali, ColQwen, ColNomic — for multimodal RAG that survives the visuals',
+      'Recapture: meeting bots on Claude + WhisperX, orchestrated on Temporal for durability',
+      'GPU transcription pipeline that survives reconnects and partial failures',
+      'Meeting Transcriber on WhisperX + pyannote for clean speaker separation',
     ],
   },
   {
-    eyebrow: 'on_prem_vision',
-    headline: 'Your cameras, now answerable. No cloud. No faces.',
-    body: 'Turn existing camera feeds into searchable, compliance-aware intelligence. Find footage in plain English. Follow a person across cameras. Flag missing PPE. All on your own GPUs — no video leaves the building, no facial recognition is used.',
+    eyebrow: 'RAG people actually use',
+    headline: 'Document intelligence that finds the answer',
+    body: 'Search that reads the page like a person does — layout, tables, stamps, handwriting — not just the text a parser could scrape. Late-interaction visual retrieval over messy real documents, plus structured extraction that turns a pile of PDFs into clean rows.',
     proof: [
-      'Lumina — multi-camera search and cross-camera person re-ID on SigLIP 2 + OSNet + SAM 3, with a web console and Terraform-provisioned GPU infra. Re-ID by design, not face recognition',
-      'Spectra — SOP, PPE, and safety-violation flagging on MLX-VLM + Gemma + SAM 3, on-prem',
-      'Florence-2 and dots.ocr for OCR-grade scene and document understanding',
+      'Harvestor: visual doc search on ColQwen2.5 late-interaction + LanceDB',
+      'Knova: app, API, and a GenAI pipeline-optimization layer on DSPy + DeepEval',
+      'HireMagic: Mistral structured extraction of resumes and invoices into clean data',
+      'A full ColPali / ColQwen / ColNomic late-interaction stack we know cold',
     ],
   },
   {
-    eyebrow: 'multi_agent',
-    headline: 'Agents that do the actual work.',
-    body: 'Not glued-together prompts. Agents that collaborate, hold long-term memory, run autonomous pipelines, and operate inside regulated domains — built on the serious frameworks.',
+    eyebrow: 'pixels on demand',
+    headline: 'Generative imagery that stays on-brand',
+    body: "Image generation that respects the catalogue. Renders that match a real SKU, not a pretty hallucination. We've wired image models into pipelines that produce assets you can actually ship to a customer.",
     proof: [
-      'Nexus — a multi-agent collaborator spanning ESG, math, patent, regulatory, and research domains',
-      'A Memory Agent for long-term recall; Mindful Poster for autonomous content; ml-intern for autonomous coding',
-      'Built on PydanticAI, LangGraph, and Google ADK',
-      'Agentic Economy on Arc — an A2A agent marketplace with sub-cent USDC x402 payments and on-chain ERC-8004 reputation',
+      'Agam: catalogue-accurate interior renders for real laminate SKUs on gpt-image-2',
+      'BookForge: turns a code repo into an illustrated explainer PDF on Claude Opus + gpt-image-2',
+      'FLUX in the toolkit for the jobs that call for it',
     ],
   },
   {
-    eyebrow: 'local_inference',
-    headline: 'Frontier-class models. Your hardware.',
-    body: 'Cut inference cost and keep data private by running models locally. When off-the-shelf serving will not fit the budget, the hardware, or the privacy requirement, we go all the way down — to hand-written C and Metal inference engines.',
+    eyebrow: 'agents that do the work',
+    headline: 'Multi-agent systems and a web3 experiment',
+    body: 'Agent loops that plan, call tools, remember, and hand off to each other — built on the frameworks we reach for daily. And when we want to see where this is all going, we build it: an agent-to-agent marketplace settling sub-cent payments on-chain.',
     proof: [
-      'ds4.c — a from-scratch C/Metal inference engine for DeepSeek V4 Flash with persistent KV-cache and 2-bit quantization',
-      'voxtral.c — pure-C Voxtral 4B speech-to-text on Metal and BLAS',
-      'Production MLX, vLLM-on-Metal, and llama.cpp on-device deployments with model-serving APIs',
+      'Nexus: multi-agent collaborator spanning ESG, math, patent, regulatory, and research',
+      'Memory Agent for long-term recall; Mindful Poster for autonomous content; ml-intern for autonomous coding',
+      'Agentic Economy on Arc: A2A marketplace, sub-cent USDC x402 payments, on-chain ERC-8004 reputation',
+      'PydanticAI, LangGraph, and Google ADK — picked per job, not per fashion',
     ],
   },
   {
-    eyebrow: 'measured_quality',
-    headline: 'We measure it. We don’t guess.',
-    body: 'Every model and pipeline ships with evals, scorecards, and hallucination detection. Where it pays off, we distill big-model quality into a cheap local model you own outright.',
+    eyebrow: 'own your model, kill the per-token bill',
+    headline: 'Local agents on your own hardware',
+    body: "Here's the part most studios can't do: the full agent loop — reasoning, tool-calling over MCP, memory, RAG, even voice — running entirely on open models on a box you control. No per-token bill that scales against your success. No data leaving the building. For a founder watching burn, that's not a footnote. That's the architecture.",
     proof: [
-      'ICL eval framework — hallucination detection and model scorecards across Claude, GPT-4o, Mistral, and SAP',
-      'proposal-distill — teacher-to-local-MLX student distillation',
-      'Synthetic data generation, fine-tuning, and a DeepSWE benchmark harness',
-      'Practice across pydantic-evals, DeepEval, and Inspect',
+      'Full local agent loop: PydanticAI on local models, MCP tools against local servers, memory and RAG on-box',
+      'A self-hosted ~32B model at frontier level on a hard workload — parked for ~$16/mo',
+      'Hands-on MLX, vLLM-on-Metal, and llama.cpp with local model-serving APIs',
+      'Experimented with running frontier-class mixture-of-experts LLMs locally at low bit-depth, and with on-device real-time speech-to-text',
+    ],
+  },
+  {
+    eyebrow: 'prove it, then ship it',
+    headline: 'Evals and cost work that hold the line',
+    body: "We don't ship on vibes. Every claim gets checked by a separate judge model — not the one that wrote the answer, not us. That discipline is how we cut model cost ~70% without losing quality, and how we took a generation pipeline from 39 seconds to 14.",
+    proof: [
+      '~70% model cost cut with quality held, gated by an independent judge',
+      '39.1s → 14.2s (~64% faster) via parallel section generation',
+      'ICL eval framework: hallucination detection and model scorecards across Claude, GPT-4o, Mistral, SAP',
+      'Teacher → local-MLX student distillation, plus DeepEval / Inspect / pydantic-evals rigs',
     ],
   },
 ]
 
 const flagships = [
   {
-    kicker: 'voice on the critical path',
-    title: 'Muscat Finance',
+    kicker: 'voice · payments · fraud · multilingual',
+    title: 'The credit-card line that runs itself',
     story:
-      'A credit-card customer-service line where the AI, not a human, handles the money. It authenticates the caller, processes payments, works fraud cases, and serves callers in multiple languages — end to end, with escalation only where the regulator requires it. Demos fold the instant a real transaction shows up. This was built for exactly that traffic.',
-    tags: ['Voice AI', 'Fintech', 'Multilingual', 'Critical path'],
+      'A credit-card service line, heavily automated end to end. The agent authenticates the caller, takes the payment, works fraud cases, and switches languages without dropping the thread. A human only gets pulled in where the regulator requires one. This is voice AI past the demo — handling money, handling identity, handling the calls nobody wants to wait on hold for.',
+    tags: ['Voice', 'Telephony', 'Payments', 'Multilingual', 'Fraud'],
   },
   {
-    kicker: 'privacy by architecture',
-    title: 'Lumina',
+    kicker: 'real-time voice · function-calling · self-hosted TTS',
+    title: 'Aura & Auralis — the voice stack, your way',
     story:
-      'Ask your security cameras a question in plain English and follow a person across every camera — without a single frame leaving the building. Multi-camera search and cross-camera re-ID on SigLIP 2, OSNet, and SAM 3, with a web console and Terraform-provisioned GPU infra. Re-ID, not facial recognition. Entirely on-prem — sidestepping the two things that kill these deals: data egress and face-rec exposure.',
-    tags: ['On-prem vision', 'Re-ID not face-rec', 'No cloud egress', 'IaC GPU'],
+      'Two takes on real-time voice. Aura runs on Pipecat with Deepgram and ElevenLabs, calling functions and searching the web mid-conversation. Auralis runs on LiveKit with self-hosted XTTS v2 — same conversational quality, none of the data leaving your infrastructure. And Pipecat Local takes it all the way: STT and TTS fully on-device. Pick your tradeoff; we’ve built all three.',
+    tags: ['Pipecat', 'LiveKit', 'Deepgram', 'XTTS v2', 'On-device'],
   },
   {
-    kicker: 'the floor of the stack',
-    title: 'ds4.c',
+    kicker: 'visual RAG · late-interaction · LanceDB',
+    title: 'Harvestor — search that reads the page',
     story:
-      'We wrote our own inference engine in C and Metal to run DeepSeek V4 Flash locally at 2-bit precision, with a persistent KV-cache — alongside voxtral.c, pure-C Voxtral 4B speech-to-text on Metal and BLAS. The layer most shops never touch. It is how we drive inference cost down and keep data fully private when off-the-shelf serving will not fit the budget, the hardware, or the rules.',
-    tags: ['Hand-written C/Metal', '2-bit quant', 'KV-cache', 'Cost + privacy'],
+      "Most document search throws away everything that isn't text. Harvestor doesn't. It runs ColQwen2.5 late-interaction retrieval over LanceDB, matching on the actual layout of a page — the table, the stamp, the figure, the thing a plain parser would flatten into noise. Ask a real question, get the real page back.",
+    tags: ['ColQwen2.5', 'Late-interaction', 'Visual RAG', 'LanceDB'],
   },
   {
-    kicker: 'parity, on a box you own',
-    title: 'Synthesis',
+    kicker: 'gpt-image-2 · catalogue-accurate',
+    title: 'Agam — renders that match the SKU',
     story:
-      'A Gene-to-GMP CMC proposal platform ran on a frontier model in the cloud. Privacy and fixed cost pushed toward a self-hosted open model — against the assumption that open models are materially worse. A decomposed, grounded pipeline (a 49-document regulatory RAG corpus, 13 concurrent work-packages, deterministic validators) plus a deliberate QLoRA fine-tune brought a local OLMo-3.1-32B level with a leading frontier model on our hardest regulatory-judgment panel. Every cited source checked out. On-prem, customer-controlled, about $16/mo parked.',
-    tags: ['Local 32B', 'Frontier parity', 'QLoRA', 'On-prem'],
+      'Generative imagery usually gives you something beautiful and wrong. Agam gives you something correct. It produces interior renders that match real laminate SKUs from the actual catalogue, on gpt-image-2 — accurate enough to put in front of a buyer. The constraint was the whole project: the model had to respect the product, not reinvent it.',
+    tags: ['gpt-image-2', 'Generative imagery', 'Catalogue-accurate'],
+  },
+  {
+    kicker: 'A2A · x402 · ERC-8004 · on-chain',
+    title: 'Agentic Economy on Arc',
+    story:
+      "A hackathon build, because that's how we stay ahead of where this is going. An agent-to-agent marketplace where agents discover each other, transact with sub-cent USDC x402 payments, and carry an on-chain ERC-8004 reputation. Speculative, fast, and real enough to run. The kind of thing you build when you want to feel the future before it's a product.",
+    tags: ['Agentic', 'Web3', 'USDC x402', 'ERC-8004', 'Hackathon'],
+  },
+  {
+    kicker: 'local · ~32B · ~$16/mo · no egress',
+    title: 'Frontier-level on a box you own',
+    story:
+      'We stood up a ~32B open model on-prem, self-hosted, and got it to frontier level on a genuinely hard workload — verified by a separate judge, not by us. Parked, it costs about $16 a month. No per-token meter ticking against your growth. No data egress to anyone’s cloud. For a founder, owning the model is the difference between a margin and a hostage situation.',
+    tags: ['Local inference', 'Self-hosted', 'MLX', 'Cost', 'Privacy'],
   },
 ]
 
 const numbers = [
-  { n: '~130', l: 'AI/ML projects and prototypes' },
-  { n: '6', l: 'product families — Knova, Lumina, Spectra, Nexus, Aura, Synthesis' },
-  { n: '2', l: 'hand-written C/Metal inference engines' },
-  { n: '10+', l: 'model providers in production, closed and open' },
-  { n: '~70%', l: 'model cost cut on measured workloads, quality held' },
-  { n: '39.1→14.2s', l: '~64% faster generation via parallelism' },
-  { n: '32B', l: 'local model at frontier-level on regulated work' },
-  { n: '$16/mo', l: 'to keep a parity-class model parked on-prem' },
-  { n: '0', l: 'frames leaving the building — on-prem vision' },
-  { n: 'every', l: 'headline claim judged by a separate model' },
+  { n: '~130', l: 'AI/ML builds shipped' },
+  { n: '6', l: 'product families' },
+  { n: '10+', l: 'model providers wired in' },
+  { n: '~6 wks', l: 'idea to production' },
+  { n: '~70%', l: 'model cost cut, quality held' },
+  { n: '39.1s→14.2s', l: '~64% faster via parallel generation' },
+  { n: '~$16/mo', l: 'to park a frontier-level model on-prem' },
+  { n: '4/4', l: 'crisis categories routed safely' },
+]
+
+const industries = [
+  ['Fintech', 'Voice agents that authenticate, take payments, and work fraud — money on the line, humans only where required.'],
+  ['Meetings & Productivity', 'Bots that join the call, transcribe on GPU, and turn an hour of talk into something you can act on.'],
+  ['Commerce & Catalog', 'Generative imagery that respects real SKUs, plus document search that reads the whole page.'],
+  ['Recruiting & Ops', 'Structured extraction that turns resumes and invoices into clean, queryable rows.'],
+  ['Founders & Startups', "MVP-to-prod in six weeks, then hardened — built by the people who'll still answer when it pages."],
+]
+
+const process = [
+  ['Scope the wedge', 'We find the smallest version that proves the thing. One real workflow, real inputs, no kitchen sink. The expensive mistake is building the wrong thing well, so we cut hard before we cut code.'],
+  ['Pick the model, prove it', "We choose the model for the job — frontier API or open weights on your own box — and gate it behind an independent judge from day one. If we can't measure it, we don't trust it."],
+  ['Ship to prod in ~6 weeks', 'Not a demo, not a notebook. A thing in production handling real load, with the retry logic, fallbacks, and evals already wired in. Founders need something live, not something promising.'],
+  ['Harden until it holds', 'We tune cost, kill the slow paths, and lock the safety rails. ~70% cheaper, ~64% faster, crisis paths routed to humans — that work happens here. When we ship, it stays shipped.'],
 ]
 
 /* ------------------------------------------------------------- sections */
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <span
-      className="font-mono text-xs tracking-widest uppercase"
-      style={{ color: 'var(--accent-text)' }}
-    >
+    <span className="font-mono text-xs tracking-widest uppercase" style={{ color: 'var(--accent-text)' }}>
       {children}
     </span>
   )
@@ -144,44 +179,30 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 function Hero() {
   return (
     <header className="relative overflow-hidden">
-      {/* radial indigo glow — OpScaler signature */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            'radial-gradient(60rem 40rem at 50% -10%, var(--accent-subtle), transparent 70%)',
-        }}
+        style={{ background: 'radial-gradient(60rem 40rem at 50% -10%, var(--accent-subtle), transparent 70%)' }}
       />
       <Container className="relative pt-32 pb-20 sm:pt-40 sm:pb-28">
         <FadeIn>
           <Eyebrow>// the inference log</Eyebrow>
           <h1 className="mt-6 max-w-4xl font-display text-5xl font-black tracking-tight sm:text-7xl">
-            We build more AI
+            We&rsquo;ve shipped AI
             <br />
-            than we say.
+            for years. Here&rsquo;s the log.
           </h1>
-          <p
-            className="mt-6 max-w-2xl text-lg leading-relaxed sm:text-xl"
-            style={{ color: 'var(--text-secondary)' }}
-          >
-            Down to the metal. A few years of it. Most teams demo. We ship —
-            voice that takes the payment, vision that never leaves the building,
-            inference engines we wrote by hand. Here is the record.
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed sm:text-xl" style={{ color: 'var(--text-secondary)' }}>
+            A lean AI studio for founders. Voice agents that take the payment. RAG
+            products people actually use. Image pipelines, agent swarms, and the
+            whole agent loop running on your own box. Idea to production in six
+            weeks — and when we ship, it stays shipped.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
-            <Link
-              href="/contact"
-              className="rounded-full px-6 py-3 text-sm font-semibold text-white transition-colors"
-              style={{ background: 'var(--accent)' }}
-            >
+            <Link href="/contact" className="rounded-full px-6 py-3 text-sm font-semibold text-white transition-colors" style={{ background: 'var(--accent)' }}>
               Start a build &rarr;
             </Link>
-            <Link
-              href="/case-studies"
-              className="rounded-full border px-6 py-3 text-sm font-semibold transition-colors"
-              style={{ borderColor: 'var(--border-color)' }}
-            >
+            <Link href="/case-studies" className="rounded-full border px-6 py-3 text-sm font-semibold transition-colors" style={{ borderColor: 'var(--border-color)' }}>
               Read the case studies
             </Link>
           </div>
@@ -197,29 +218,27 @@ function Manifesto() {
       <Container>
         <FadeIn className="max-w-3xl">
           <Eyebrow>// the standard</Eyebrow>
-          <div
-            className="mt-6 space-y-6 text-lg leading-relaxed sm:text-xl"
-            style={{ color: 'var(--text-secondary)' }}
-          >
+          <div className="mt-6 space-y-6 text-lg leading-relaxed sm:text-xl" style={{ color: 'var(--text-secondary)' }}>
             <p style={{ color: 'var(--text-primary)' }}>
-              Most AI you have watched is a demo. It works on a stage, on a happy
-              path, on someone else’s data, in someone else’s cloud. Then a real
-              caller asks for something off-script, and the demo goes quiet.
+              Most AI work is a demo. A glossy clip, a staged prompt, a slide that
+              never survives contact with a real user. We don&rsquo;t do that.
+              Everything on this page ran — against real inputs, real load, real
+              edge cases nobody wrote down first.
             </p>
             <p>
-              We build the other kind. AI that authenticates a caller and moves
-              their money. Vision that watches a factory floor and never sends a
-              frame outside the building. A regulatory proposal a local model
-              writes well enough to stand beside a frontier model — on a box you
-              own, for about sixteen dollars a month parked.
+              We&rsquo;ve been heads-down on this for years, not months. The
+              founders still write code every day. That&rsquo;s not a humblebrag —
+              it&rsquo;s the whole point. You can&rsquo;t fake the hours. Around
+              130 AI/ML builds. Six product families. More than ten model
+              providers wired in and load-tested. The depth shows up in the parts
+              nobody screenshots: the retry logic, the fallback model, the eval
+              that caught the regression before the customer did.
             </p>
             <p>
-              We have a rule for ourselves: a claim isn’t true because we like
-              it. Every cost cut, every speedup, every “it’s just as good” is
-              gated behind a separate judge model — a different model than the
-              one we shipped. We publish the experiments that failed and the bugs
-              that fooled us, because the honest version is the only version a
-              CTO can trust. No gloss. Just the engineering, with the receipts.
+              <span style={{ color: 'var(--accent-text)' }} className="font-mono text-base">// no bloat, no BS.</span>{' '}
+              We pick the smallest thing that works, ship it fast, and harden it
+              until it doesn&rsquo;t break. The flashy part is easy. We&rsquo;re
+              here for the part that has to run on a Tuesday at 3am.
             </p>
           </div>
         </FadeIn>
@@ -228,52 +247,25 @@ function Manifesto() {
   )
 }
 
-function TwoHouses() {
+function WhoWeAre() {
   return (
     <section className="py-16 sm:py-20">
       <Container>
-        <FadeIn>
-          <Eyebrow>// two front doors</Eyebrow>
-          <p className="mt-4 max-w-2xl font-display text-2xl font-bold tracking-tight sm:text-3xl">
-            Same engineers, same standard, two front doors — one for the depth
-            and compliance of the enterprise, one for the speed and runway of a
-            startup.
+        <FadeIn className="max-w-3xl">
+          <Eyebrow>// who builds this</Eyebrow>
+          <p className="mt-4 font-display text-2xl font-bold tracking-tight sm:text-3xl">
+            A two-person studio for startups that ship.
+          </p>
+          <p className="mt-5 text-[15px] leading-relaxed sm:text-lg" style={{ color: 'var(--text-secondary)' }}>
+            OpScaler is a two-person AI studio out of Wyoming, built for startups
+            that need to ship. Pavan Tikkani and Karthik Sethupathy founded it,
+            and both still push code daily — no account managers, no handoff to a
+            junior bench, just the people who designed it building it. We take an
+            idea to production in roughly six weeks, then keep it standing. The
+            model providers change, the frameworks churn, the hype cycle resets
+            every quarter. We&rsquo;ve shipped through all of it.
           </p>
         </FadeIn>
-        <div
-          className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-3xl border md:grid-cols-2"
-          style={{ borderColor: 'var(--border-color)', background: 'var(--border-color)' }}
-        >
-          <div className="p-8 sm:p-10" style={{ background: 'var(--bg-secondary)' }}>
-            <h3 className="font-display text-2xl font-bold tracking-tight">OpScaler</h3>
-            <p className="mt-1 font-mono text-xs" style={{ color: 'var(--accent-text)' }}>
-              // build it. ship it. scale it.
-            </p>
-            <p className="mt-5 text-[15px] leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              For startups that ship. A lean, US-incorporated studio founded by
-              two builders — Pavan Tikkani and Karthik Sethupathy — who still
-              write code every day. No account managers. No six-month timelines.
-              Same Slack, same repos, same standups. MVPs in weeks, idea to
-              production in six. The same independently-judged AI rigor as the
-              depth house, sized for a founder’s runway. When it ships, it holds.
-            </p>
-          </div>
-          <div className="p-8 sm:p-10" style={{ background: 'var(--bg-secondary)' }}>
-            <h3 className="font-display text-2xl font-bold tracking-tight">Prag-Matic</h3>
-            <p className="mt-1 font-mono text-xs" style={{ color: 'var(--accent-text)' }}>
-              // applications that drive results.
-            </p>
-            <p className="mt-5 text-[15px] leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              The AI/ML depth house. Built for regulated industries from the
-              ground up — pharma, fintech, healthcare, telecom — where audit
-              trails, data governance, and on-prem isolation are the baseline,
-              not the upsell. Founded by three technologists with about two
-              decades each across global tech and Bay Area enterprise SaaS. When
-              the problem is hard, regulated, and has to be defensible, this is
-              the team.
-            </p>
-          </div>
-        </div>
       </Container>
     </section>
   )
@@ -284,7 +276,7 @@ function Capabilities() {
     <section className="py-16 sm:py-24">
       <Container>
         <FadeIn>
-          <Eyebrow>// what we’ve shipped</Eyebrow>
+          <Eyebrow>// what we&rsquo;ve shipped</Eyebrow>
           <h2 className="mt-4 max-w-3xl font-display text-4xl font-black tracking-tight sm:text-5xl">
             Seven things we can prove.
           </h2>
@@ -292,25 +284,16 @@ function Capabilities() {
         <div className="mt-14 space-y-px overflow-hidden rounded-3xl border" style={{ borderColor: 'var(--border-color)', background: 'var(--border-color)' }}>
           {capabilities.map((c) => (
             <FadeIn key={c.eyebrow}>
-              <div
-                className="grid grid-cols-1 gap-8 p-8 sm:p-10 lg:grid-cols-[1fr_1fr]"
-                style={{ background: 'var(--bg-secondary)' }}
-              >
+              <div className="grid grid-cols-1 gap-8 p-8 sm:p-10 lg:grid-cols-[1fr_1fr]" style={{ background: 'var(--bg-secondary)' }}>
                 <div>
                   <Eyebrow>// {c.eyebrow}</Eyebrow>
-                  <h3 className="mt-4 font-display text-2xl font-bold tracking-tight sm:text-3xl">
-                    {c.headline}
-                  </h3>
-                  <p className="mt-4 text-[15px] leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                    {c.body}
-                  </p>
+                  <h3 className="mt-4 font-display text-2xl font-bold tracking-tight sm:text-3xl">{c.headline}</h3>
+                  <p className="mt-4 text-[15px] leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{c.body}</p>
                 </div>
                 <ul className="space-y-3 lg:pt-9">
                   {c.proof.map((p, i) => (
                     <li key={i} className="flex gap-3 text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                      <span style={{ color: 'var(--accent-text)' }} className="mt-1 font-mono text-xs">
-                        →
-                      </span>
+                      <span style={{ color: 'var(--accent-text)' }} className="mt-1 font-mono text-xs">→</span>
                       <span>{p}</span>
                     </li>
                   ))}
@@ -331,32 +314,19 @@ function Flagships() {
         <FadeIn>
           <Eyebrow>// flagships</Eyebrow>
           <h2 className="mt-4 max-w-3xl font-display text-4xl font-black tracking-tight sm:text-5xl">
-            Four we’d put in the room with you.
+            Six we&rsquo;d put in the room with you.
           </h2>
         </FadeIn>
         <FadeInStagger className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2">
           {flagships.map((f) => (
             <FadeIn key={f.title}>
-              <div
-                className="h-full rounded-3xl border p-8 sm:p-10"
-                style={{ borderColor: 'var(--border-color)', background: 'var(--bg-secondary)' }}
-              >
-                <p className="font-mono text-xs tracking-widest uppercase" style={{ color: 'var(--accent-text)' }}>
-                  // {f.kicker}
-                </p>
+              <div className="h-full rounded-3xl border p-8 sm:p-10" style={{ borderColor: 'var(--border-color)', background: 'var(--bg-secondary)' }}>
+                <p className="font-mono text-xs tracking-widest uppercase" style={{ color: 'var(--accent-text)' }}>// {f.kicker}</p>
                 <h3 className="mt-4 font-display text-2xl font-bold tracking-tight">{f.title}</h3>
-                <p className="mt-4 text-[15px] leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                  {f.story}
-                </p>
+                <p className="mt-4 text-[15px] leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{f.story}</p>
                 <div className="mt-6 flex flex-wrap gap-2">
                   {f.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="rounded-full px-3 py-1 font-mono text-[11px]"
-                      style={{ background: 'var(--accent-subtle)', color: 'var(--accent-text)' }}
-                    >
-                      {t}
-                    </span>
+                    <span key={t} className="rounded-full px-3 py-1 font-mono text-[11px]" style={{ background: 'var(--accent-subtle)', color: 'var(--accent-text)' }}>{t}</span>
                   ))}
                 </div>
               </div>
@@ -372,21 +342,12 @@ function Numbers() {
   return (
     <section className="py-16 sm:py-24">
       <Container>
-        <FadeIn>
-          <Eyebrow>// by the numbers</Eyebrow>
-        </FadeIn>
-        <div
-          className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border md:grid-cols-3 lg:grid-cols-5"
-          style={{ borderColor: 'var(--border-color)', background: 'var(--border-color)' }}
-        >
+        <FadeIn><Eyebrow>// by the numbers</Eyebrow></FadeIn>
+        <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border md:grid-cols-4" style={{ borderColor: 'var(--border-color)', background: 'var(--border-color)' }}>
           {numbers.map((s) => (
             <div key={s.l} className="p-6 sm:p-8" style={{ background: 'var(--bg-secondary)' }}>
-              <div className="font-display text-3xl font-black tracking-tight sm:text-4xl" style={{ color: 'var(--accent-text)' }}>
-                {s.n}
-              </div>
-              <div className="mt-2 text-xs leading-snug" style={{ color: 'var(--text-secondary)' }}>
-                {s.l}
-              </div>
+              <div className="font-display text-3xl font-black tracking-tight sm:text-4xl" style={{ color: 'var(--accent-text)' }}>{s.n}</div>
+              <div className="mt-2 text-xs leading-snug" style={{ color: 'var(--text-secondary)' }}>{s.l}</div>
             </div>
           ))}
         </div>
@@ -395,27 +356,64 @@ function Numbers() {
   )
 }
 
-function Range() {
+function Industries() {
+  return (
+    <section className="py-16 sm:py-20">
+      <Container>
+        <FadeIn><Eyebrow>// where it runs</Eyebrow></FadeIn>
+        <div className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-3xl border sm:grid-cols-2 lg:grid-cols-3" style={{ borderColor: 'var(--border-color)', background: 'var(--border-color)' }}>
+          {industries.map(([name, line]) => (
+            <div key={name} className="p-7 sm:p-8" style={{ background: 'var(--bg-secondary)' }}>
+              <h3 className="font-display text-lg font-bold tracking-tight">{name}</h3>
+              <p className="mt-2 text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{line}</p>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </section>
+  )
+}
+
+function Toolbox() {
   return (
     <section className="py-16 sm:py-20">
       <Container>
         <FadeIn className="max-w-3xl">
           <Eyebrow>// the toolbox</Eyebrow>
           <p className="mt-6 text-lg leading-relaxed sm:text-xl" style={{ color: 'var(--text-secondary)' }}>
-            Breadth is not the pitch — it is the evidence. Closed models from
-            Anthropic, OpenAI, Google, Mistral, and Cohere, next to open models
-            we serve ourselves: Qwen and ColQwen2.5, Llama, DeepSeek V4 Flash,
-            Voxtral, SigLIP 2, SAM 3, Florence-2, Gemma, XTTS v2, Kokoro. Voice
-            on Pipecat, LiveKit, Deepgram, ElevenLabs, WhisperX, and pyannote,
-            orchestrated with Temporal. Agents on PydanticAI, LangGraph, and
-            Google ADK — down to A2A, x402, and ERC-8004 primitives. Retrieval
-            with ColPali-class late-interaction and LanceDB, optimized with DSPy.
-            Local serving on MLX, vLLM-on-Metal, llama.cpp — and when none of
-            that is enough, on inference engines we wrote by hand in C and Metal.
-            We pick the right tool for the job, not the most hyped one — because
-            we have used enough of them to know the difference.
+            Breadth is the receipt. We&rsquo;ve shipped on Anthropic Claude,
+            OpenAI, Google Gemini, Mistral, and Cohere, and on open weights — Qwen
+            and ColQwen2.5, Llama, SigLIP 2, SAM 3, Florence-2, Gemma, XTTS v2,
+            Kokoro. Voice runs on Pipecat, LiveKit, Deepgram, ElevenLabs,
+            WhisperX, pyannote. Retrieval runs on late-interaction stacks over
+            LanceDB. Agents run on PydanticAI, LangGraph, and Google ADK, with MCP
+            tools wired in. And we run models locally — MLX, vLLM-on-Metal, and
+            llama.cpp, with local serving APIs — building the whole agent loop on
+            a box the customer owns. We picked every one of these for a real job
+            and load-tested it. Ten-plus providers isn&rsquo;t a logo wall.
+            It&rsquo;s ten-plus times we figured out what a model is good for and
+            what it&rsquo;ll quietly get wrong.
           </p>
         </FadeIn>
+      </Container>
+    </section>
+  )
+}
+
+function Process() {
+  return (
+    <section className="py-16 sm:py-20">
+      <Container>
+        <FadeIn><Eyebrow>// how we work</Eyebrow></FadeIn>
+        <div className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-3xl border sm:grid-cols-2" style={{ borderColor: 'var(--border-color)', background: 'var(--border-color)' }}>
+          {process.map(([phase, desc], i) => (
+            <div key={phase} className="p-8 sm:p-10" style={{ background: 'var(--bg-secondary)' }}>
+              <span className="font-mono text-xs" style={{ color: 'var(--accent-text)' }}>{String(i + 1).padStart(2, '0')}</span>
+              <h3 className="mt-3 font-display text-xl font-bold tracking-tight">{phase}</h3>
+              <p className="mt-3 text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{desc}</p>
+            </div>
+          ))}
+        </div>
       </Container>
     </section>
   )
@@ -426,53 +424,30 @@ function Closing() {
     <section className="py-20 sm:py-28">
       <Container>
         <FadeIn>
-          <div
-            className="relative overflow-hidden rounded-4xl p-10 sm:p-16"
-            style={{ background: 'var(--bg-tertiary)' }}
-          >
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0"
-              style={{
-                background:
-                  'radial-gradient(40rem 30rem at 80% 0%, var(--accent-subtle), transparent 70%)',
-              }}
-            />
+          <div className="relative overflow-hidden rounded-4xl p-10 sm:p-16" style={{ background: 'var(--bg-tertiary)' }}>
+            <div aria-hidden="true" className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(40rem 30rem at 80% 0%, var(--accent-subtle), transparent 70%)' }} />
             <div className="relative max-w-3xl">
-              <Eyebrow>// let the work speak</Eyebrow>
+              <Eyebrow>// let&rsquo;s build</Eyebrow>
               <h2 className="mt-4 font-display text-4xl font-black tracking-tight sm:text-5xl">
-                Stop buying demos.
+                Got an idea?
                 <br />
-                Start shipping systems.
+                Let&rsquo;s get it shipped.
               </h2>
               <p className="mt-6 text-[15px] leading-relaxed sm:text-lg" style={{ color: 'var(--text-secondary)' }}>
-                You’ve seen the slides where everything works. We’d rather show
-                you the run where it didn’t — the false-green pass, the lossy
-                transcript that dropped the crisis numbers, the assumption that
-                the frontier model was required and never was. We find those
-                because we test our own work like an adversary, and we fix them
-                because that’s the job. If you have something real to build —
-                something that has to authenticate, transact, stay private, pass
-                an audit, and hold up when a regulator asks how — there are two
-                front doors. OpScaler if it’s a startup with a runway to respect.
-                Prag-Matic if it’s enterprise and regulated. Same engineers. Same
-                standard.
+                Six weeks from idea to production. Built by the two people
+                who&rsquo;ll still be on the other end when it matters — not a
+                bench, not a handoff. Bring the messy version; we&rsquo;ll find
+                the smallest thing that works and ship it hard.{' '}
+                <span style={{ color: 'var(--accent-text)' }} className="font-mono">// no bloat, no BS.</span>{' '}
+                When we ship, it stays shipped.
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
-                <Link
-                  href="/contact"
-                  className="rounded-full px-6 py-3 text-sm font-semibold text-white transition-colors"
-                  style={{ background: 'var(--accent)' }}
-                >
+                <Link href="/contact" className="rounded-full px-6 py-3 text-sm font-semibold text-white transition-colors" style={{ background: 'var(--accent)' }}>
                   Talk to the founders &rarr;
                 </Link>
-                <a
-                  href="mailto:info@prag-matic.com"
-                  className="rounded-full border px-6 py-3 text-sm font-semibold"
-                  style={{ borderColor: 'var(--border-color)' }}
-                >
-                  info@prag-matic.com
-                </a>
+                <Link href="/case-studies" className="rounded-full border px-6 py-3 text-sm font-semibold" style={{ borderColor: 'var(--border-color)' }}>
+                  Read the case studies
+                </Link>
               </div>
             </div>
           </div>
@@ -487,11 +462,13 @@ export default function InferenceLogPage() {
     <SiteLayout>
       <Hero />
       <Manifesto />
-      <TwoHouses />
+      <WhoWeAre />
       <Capabilities />
       <Flagships />
       <Numbers />
-      <Range />
+      <Industries />
+      <Toolbox />
+      <Process />
       <Closing />
     </SiteLayout>
   )
