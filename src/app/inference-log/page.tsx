@@ -254,12 +254,12 @@ function WhoWeAre() {
         <FadeIn className="max-w-3xl">
           <Eyebrow>// who builds this</Eyebrow>
           <p className="mt-4 font-display text-2xl font-bold tracking-tight sm:text-3xl">
-            A two-person studio for startups that ship.
+            A small, senior studio for startups that ship.
           </p>
           <p className="mt-5 text-[15px] leading-relaxed sm:text-lg" style={{ color: 'var(--text-secondary)' }}>
-            OpScaler is a two-person AI studio out of Wyoming, built for startups
+            OpScaler is a small, senior AI studio out of Wyoming, built for startups
             that need to ship. Pavan Tikkani and Karthik Sethupathy founded it,
-            and both still push code daily — no account managers, no handoff to a
+            and still push code daily — no account managers, no handoff to a
             junior bench, just the people who designed it building it. We take an
             idea to production in roughly six weeks, then keep it standing. The
             model providers change, the frameworks churn, the hype cycle resets
@@ -434,7 +434,7 @@ function Closing() {
                 Let&rsquo;s get it shipped.
               </h2>
               <p className="mt-6 text-[15px] leading-relaxed sm:text-lg" style={{ color: 'var(--text-secondary)' }}>
-                Six weeks from idea to production. Built by the two people
+                Six weeks from idea to production. Built by the senior team
                 who&rsquo;ll still be on the other end when it matters — not a
                 bench, not a handoff. Bring the messy version; we&rsquo;ll find
                 the smallest thing that works and ship it hard.{' '}
