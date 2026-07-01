@@ -10,56 +10,56 @@ const phases = [
     num: '01',
     title: 'Discover',
     duration: 'Week 1',
-    description: 'We start by deeply understanding your business, your users, and your constraints. No 80-page requirements documents. A focused sprint to align on what matters.',
+    description: 'We scope the wedge — the one workflow where AI has to earn its keep — and decide up front what "good" means. That includes the model call: frontier API for speed, or open weights on a box you own for cost and control. Then we write the eval criteria before we write the agent.',
     includes: [
-      'Stakeholder interviews',
-      'Technical assessment',
-      'Architecture planning',
-      'Risk analysis',
-      'Scope & timeline agreement',
-      'Success metrics definition',
+      'Scope the wedge — the workflow that matters',
+      'Model decision: frontier API vs open weights on your box',
+      'Own-it call: what leaves the building, what stays',
+      'Eval criteria defined before the build',
+      'Independent judge and pass/fail bar agreed',
+      'Success metrics tied to money, not vibes',
     ],
   },
   {
     num: '02',
     title: 'Build',
     duration: 'Weeks 2-5',
-    description: 'Agile sprints with working demos every week. You see progress constantly, give feedback early, and we course-correct in real time. No surprises at the end.',
+    description: 'We build the real thing — the RAG pipeline, the agent loop, the fine-tune — with a working demo every week. The independent eval harness is wired in from day one, so every change is scored by a separate judge model, not graded by the people who wrote it.',
     includes: [
-      'Weekly sprint demos',
-      'Continuous integration',
-      'Automated testing',
-      'Code review on every PR',
-      'Real-time Slack communication',
-      'Iterative design refinement',
+      'RAG / agent / fine-tune build',
+      'Independent eval harness wired in day one',
+      'A separate judge model scores every change',
+      'Weekly demos against the eval bar',
+      'Distillation and LoRA/QLoRA where open weights fit',
+      'Real-time Slack — no surprises at the end',
     ],
   },
   {
     num: '03',
-    title: 'Ship',
-    duration: 'Week 6',
-    description: 'Deployment isn\'t an afterthought. CI/CD pipelines, monitoring, and documentation are built in from day one. When we ship, it stays shipped.',
+    title: 'Ship & harden',
+    duration: 'Week 6+',
+    description: 'Deployment is where most AI dies. AI writes code at warp speed — so this is where we slow down to speed up: read what shipped, test the edges, and gate every release behind the independent judge, with retries, fallbacks, and safety guardrails. Then we harden for cost and latency — roughly 70% cheaper and 64% faster on real workloads. Crisis and edge paths route to a human. When we ship, it stays shipped.',
     includes: [
-      'Production deployment',
-      'CI/CD pipeline setup',
-      'Performance optimization',
-      'Monitoring & alerting',
-      'Documentation & handoff',
-      'Ongoing support options',
+      'Slow down to speed up — nothing ships unread or unproven',
+      'Production deploy with retries and fallbacks',
+      'Independent-judge gating on every release',
+      'Safety guardrails and crisis paths routed to humans',
+      'Cost hardening — ~70% cheaper, quality held',
+      'Latency hardening — ~64% faster',
     ],
   },
 ]
 
 const principles = [
-  { title: 'Meticulous', description: 'We sweat the details. Every line of code, every deploy, every design decision is carefully considered.' },
-  { title: 'Efficient', description: 'We optimize for outcomes, not activity. Maximum value, minimum waste.' },
-  { title: 'Adaptable', description: 'Requirements change. Technology evolves. We embrace it and adjust.' },
-  { title: 'Transparent', description: 'Open communication builds trust. You always know where things stand.' },
+  { title: 'Own it', description: 'Frontier-level models on hardware you control. No per-token bill that scales against your success, no data leaving the building.' },
+  { title: 'Prove it', description: 'Every claim is checked by a separate judge model. We trust nothing unmeasured — not vibes, not self-grading, not our own opinion.' },
+  { title: 'Ship it', description: 'Into regulated, money-on-the-line reality — not demos. Retries, fallbacks, and human-in-the-loop where the regulator requires it.' },
+  { title: 'Transparent', description: 'Open communication builds trust. Weekly demos against the eval bar mean you always know exactly where things stand.' },
 ]
 
 export const metadata: Metadata = {
   title: 'Our Process',
-  description: 'How OpScaler works. A three-phase process: Discover, Build, Ship. From idea to production in 6 weeks.',
+  description: 'How OpScaler builds AI you can own, prove, and ship. Three phases: scope the wedge and pick the model, build with an independent eval harness from day one, then ship hardened behind a separate judge — idea to production in ~6 weeks.',
 }
 
 export default function Process() {
@@ -73,11 +73,16 @@ export default function Process() {
               Process
             </p>
             <h1 className="mt-4 max-w-[600px] font-display text-4xl font-extrabold tracking-[-0.03em] sm:text-5xl md:text-6xl md:leading-[1.05]">
-              How we work
+              Own it. Prove it. Ship it.
             </h1>
-            <p className="mt-6 max-w-[540px] text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              A structured but flexible approach. Three phases, six weeks, working
-              software at the end. We keep you in the loop at every step.
+            <p className="mt-6 max-w-[560px] text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              How we build AI that survives contact with production. Three phases, about
+              six weeks to first ship, then hardened. Every claim is scored by a separate
+              judge model — receipts, not adjectives. See the{' '}
+              <Link href="/inference-log" className="underline underline-offset-2" style={{ color: 'var(--accent-text)' }}>
+                inference log
+              </Link>{' '}
+              for the work behind it.
             </p>
           </FadeIn>
         </Container>
@@ -187,7 +192,7 @@ export default function Process() {
                 Ready to start?
               </h2>
               <p className="relative mt-3 text-[15px]" style={{ color: 'var(--text-secondary)' }}>
-                Tell us about your project and we&apos;ll scope a plan together.
+                Tell us the wedge and we&apos;ll scope the model, the eval, and the ship together.
               </p>
               <div className="relative mt-7">
                 <Link

@@ -4,12 +4,13 @@ import { Logo } from '@/components/Logo'
 
 const footerLinks = [
   {
-    title: 'Services',
+    title: 'Disciplines',
     links: [
-      { label: 'AI & Machine Learning', href: '/services#ai-ml' },
-      { label: 'Web & Mobile', href: '/services#web-mobile' },
-      { label: 'Cloud Infrastructure', href: '/services#cloud' },
-      { label: 'DevOps & Automation', href: '/services#devops' },
+      { label: 'Fine-Tuning & Customization', href: '/services#fine-tuning' },
+      { label: 'Evaluation & Observability', href: '/services#evals' },
+      { label: 'AI Safety & Alignment', href: '/services#safety' },
+      { label: 'Sovereign / Private AI', href: '/services#sovereign' },
+      { label: 'Governance & Compliance', href: '/services#governance' },
     ],
   },
   {
@@ -18,6 +19,7 @@ const footerLinks = [
       { label: 'About', href: '/about' },
       { label: 'Process', href: '/process' },
       { label: 'Case Studies', href: '/case-studies' },
+      { label: 'The Inference Log', href: '/inference-log' },
       { label: 'Contact', href: '/contact' },
     ],
   },
@@ -40,7 +42,7 @@ export function Footer() {
               <Logo />
             </Link>
             <p className="mt-4 text-sm" style={{ color: 'var(--text-tertiary)' }}>
-              Build. Ship. Scale.
+              Own it. Prove it. Ship it.
             </p>
           </div>
           {footerLinks.map((group) => (

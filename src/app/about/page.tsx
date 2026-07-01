@@ -10,29 +10,30 @@ const founders = [
   {
     name: 'Pavan Tikkani',
     role: 'Co-Founder',
-    bio: 'Nearly two decades in global technology. Known for simplifying complex challenges and an unwavering passion for clean, elegant code. Deep expertise across established and cutting-edge tech stacks.',
+    bio: 'Nearly two decades in global technology, now focused on the hard end of AI systems: fine-tuning and distilling open-weight models to frontier parity, LoRA/QLoRA on domain data, and independent multi-judge evals so quality is measured, not asserted. Known for simplifying complex challenges and an unwavering passion for clean, elegant code.',
     image: '/team/pavan.png',
   },
   {
     name: 'Karthik Sethupathy',
     role: 'Co-Founder',
-    bio: 'Seasoned technologist with deep expertise in cloud infrastructure, AWS, and enterprise-grade SaaS. Built his career across leading Bay Area tech companies. Sharp, detail-oriented approach to complex infrastructure challenges.',
+    bio: 'Seasoned technologist who built his career across leading Bay Area tech companies. Owns the AI-infrastructure backbone: sovereign, on-prem model serving on hardware the customer controls (MLX, vLLM, llama.cpp), the full agent loop over MCP, and zero-egress deployments that run at fixed cost. Sharp, detail-oriented approach to standing up frontier-level models on a box you own.',
     image: '/team/karthik.png',
   },
 ]
 
 const values = [
-  { title: 'Ship fast', description: 'We optimize for time-to-market. Working software beats perfect plans.' },
-  { title: 'Stay lean', description: 'No bloated teams, no unnecessary process. Every person and every line of code earns its place.' },
-  { title: 'Be transparent', description: 'Same Slack, same repos, same standups. You always know what we\'re building and why.' },
-  { title: 'Build to last', description: 'Fast doesn\'t mean sloppy. We write code your next engineer will thank you for.' },
-  { title: 'Think like owners', description: 'We treat your runway like our own. Every decision balances speed, cost, and quality.' },
-  { title: 'Keep learning', description: 'Technology moves fast. We stay current so your stack doesn\'t become legacy.' },
+  { title: 'Own it', description: 'We run frontier-level models on hardware you control. No per-token bill, no data egress — you own the model and the data.' },
+  { title: 'Prove it', description: 'Never ship on vibes. Every claim is checked by a separate judge model — independent evals, not self-grading.' },
+  { title: 'Ship it', description: 'Into regulated, money-on-the-line reality — fintech voice payments, life-sciences CMC — not demos. When we ship, it stays shipped.' },
+  { title: 'Stay lean', description: 'A two-person studio, both still coding daily. No account managers, no layers of process. No bloat, no BS.' },
+  { title: 'Move in weeks', description: 'Idea to production in about six weeks, then hardened. Fast doesn’t mean sloppy — we write code your next engineer will thank you for.' },
+  { title: 'Slow down to speed up', description: 'AI writes code at warp speed. More is generated than ever, and less of it reviewed. So we slow down where it counts — read the code, test the edges, gate it behind a separate judge — because that’s what makes the speed safe to keep.' },
+  { title: 'Keep learning', description: 'The frontier moves weekly. We stay current on models, tooling, and technique so your stack stays sharp, not legacy.' },
 ]
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Meet the team behind OpScaler. Two experienced technologists helping startups and small businesses build and scale.',
+  description: 'Meet the team behind OpScaler — a two-person AI studio built on the hard disciplines: fine-tuning, evals, AI safety, sovereign on-prem inference, and governance. Own it, prove it, ship it.',
 }
 
 export default function About() {
@@ -50,14 +51,17 @@ export default function About() {
             </h1>
             <div className="mt-8 max-w-[540px] space-y-5 text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               <p>
-                OpScaler was founded in the US by Pavan and Karthik &mdash; two
-                experienced technologists who believe great technology shouldn&apos;t
-                require enterprise budgets or six-month timelines.
+                OpScaler is a two-person AI studio, founded in the US by Pavan and
+                Karthik. We&apos;re not a generic dev shop that added an AI page &mdash;
+                our edge is depth in the hard disciplines: fine-tuning open-weight
+                models to frontier parity, independent evals, AI safety, sovereign
+                on-prem inference, and governance for regulated work.
               </p>
               <p>
-                We work directly with founders and small teams to build products.
-                No account managers, no layers of process. Just senior engineers
-                who understand both the code and the business.
+                We build directly with founders and small teams. No account managers,
+                no layers of process &mdash; just senior engineers who own the model,
+                prove the quality with a separate judge, and ship it into
+                money-on-the-line reality. When we ship, it stays shipped.
               </p>
             </div>
           </FadeIn>
