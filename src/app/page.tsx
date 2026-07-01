@@ -113,13 +113,7 @@ export default function Home() {
                 <div key={stat.label} className="p-8 text-center" style={{ background: 'var(--bg-secondary)' }}>
                   <div
                     className="font-display text-3xl font-black tracking-tight"
-                    style={{
-                      backgroundImage: 'linear-gradient(135deg, var(--text-primary), var(--accent-text))',
-                      backgroundClip: 'text',
-                      WebkitBackgroundClip: 'text',
-                      color: 'transparent',
-                      WebkitTextFillColor: 'transparent',
-                    }}
+                    style={{ color: 'var(--accent-text)' }}
                   >
                     {stat.value}
                   </div>
