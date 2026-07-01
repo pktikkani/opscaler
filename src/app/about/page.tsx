@@ -25,7 +25,7 @@ const values = [
   { title: 'Own it', description: 'We run frontier-level models on hardware you control. No per-token bill, no data egress — you own the model and the data.' },
   { title: 'Prove it', description: 'Never ship on vibes. Every claim is checked by a separate judge model — independent evals, not self-grading.' },
   { title: 'Ship it', description: 'Into regulated, money-on-the-line reality — fintech voice payments, life-sciences CMC — not demos. When we ship, it stays shipped.' },
-  { title: 'Stay lean', description: 'A two-person studio, both still coding daily. No account managers, no layers of process. No bloat, no BS.' },
+  { title: 'Stay lean', description: 'A small, senior team — the people who design it build it. No account managers, no layers of process, no bench to hand you off to. No bloat, no BS.' },
   { title: 'Move in weeks', description: 'Idea to production in about six weeks, then hardened. Fast doesn’t mean sloppy — we write code your next engineer will thank you for.' },
   { title: 'Slow down to speed up', description: 'AI writes code at warp speed. More is generated than ever, and less of it reviewed. So we slow down where it counts — read the code, test the edges, gate it behind a separate judge — because that’s what makes the speed safe to keep.' },
   { title: 'Keep learning', description: 'The frontier moves weekly. We stay current on models, tooling, and technique so your stack stays sharp, not legacy.' },
@@ -33,7 +33,7 @@ const values = [
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Meet the team behind OpScaler — a two-person AI studio built on the hard disciplines: fine-tuning, evals, AI safety, sovereign on-prem inference, and governance. Own it, prove it, ship it.',
+  description: 'Meet the team behind OpScaler — a small, senior AI studio built on the hard disciplines: fine-tuning, evals, AI safety, sovereign on-prem inference, and governance. Own it, prove it, ship it.',
 }
 
 export default function About() {
@@ -47,11 +47,11 @@ export default function About() {
               About
             </p>
             <h1 className="mt-4 max-w-[600px] font-display text-4xl font-extrabold tracking-[-0.03em] sm:text-5xl md:text-6xl md:leading-[1.05]">
-              Two builders who still write code every day.
+              A small team, deep in the hard parts of AI.
             </h1>
             <div className="mt-8 max-w-[540px] space-y-5 text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               <p>
-                OpScaler is a two-person AI studio, founded in the US by Pavan and
+                OpScaler is a small, senior AI studio, founded in the US by Pavan and
                 Karthik. We&apos;re not a generic dev shop that added an AI page &mdash;
                 our edge is depth in the hard disciplines: fine-tuning open-weight
                 models to frontier parity, independent evals, AI safety, sovereign
@@ -146,10 +146,10 @@ export default function About() {
             </h2>
           </FadeIn>
 
-          <FadeInStagger className="mt-12 grid gap-px overflow-hidden rounded-2xl sm:grid-cols-2 lg:grid-cols-3" style={{ background: 'var(--border-color)' }}>
-            {values.map((value) => (
-              <FadeIn key={value.title}>
-                <div className="p-8" style={{ background: 'var(--bg-secondary)' }}>
+          <FadeInStagger className="mt-12 grid gap-px overflow-hidden rounded-2xl sm:grid-cols-2 lg:grid-cols-4" style={{ background: 'var(--border-color)' }}>
+            {values.map((value, i) => (
+              <FadeIn key={value.title} className={i === values.length - 1 ? 'sm:col-span-2 lg:col-span-2' : undefined}>
+                <div className="h-full p-8" style={{ background: 'var(--bg-secondary)' }}>
                   <h3 className="font-display text-base font-bold">{value.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                     {value.description}

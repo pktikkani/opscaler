@@ -41,7 +41,7 @@ const stats = [
 ]
 
 export const metadata: Metadata = {
-  description: 'OpScaler is a two-person AI studio. We fine-tune, evaluate, secure, and govern AI you own, prove it with an independent judge model, and ship it into regulated reality. Own it. Prove it. Ship it.',
+  description: 'OpScaler is a small, senior AI studio. We fine-tune, evaluate, secure, and govern AI you own, prove it with an independent judge model, and ship it into regulated reality. Own it. Prove it. Ship it.',
 }
 
 export default function Home() {
@@ -68,7 +68,7 @@ export default function Home() {
               <span style={{ color: 'var(--accent-text)' }}>Ship it.</span>
             </h1>
             <p className="mt-6 max-w-[520px] text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              A two-person AI studio that runs frontier-level models on hardware
+              A small, senior AI studio that runs frontier-level models on hardware
               you own — no per-token bill, no data egress — proves every claim
               with a separate judge model instead of vibes, and ships into
               regulated, money-on-the-line reality. When we ship, it stays shipped.
@@ -298,9 +298,9 @@ export default function Home() {
                 Ship it.
               </h2>
               <p className="relative mt-3 text-[15px]" style={{ color: 'var(--text-secondary)' }}>
-                Two founders, both still coding daily, out of Wyoming. Idea to
-                production in ~6 weeks, then hardened. No bloat, no BS. We respond
-                within 24 hours.
+                A small, senior team out of Wyoming — the people who design it
+                build it, no bench, no handoff. Idea to production in ~6 weeks,
+                then hardened. No bloat, no BS. We respond within 24 hours.
               </p>
               <div className="relative mt-7">
                 <Link
