@@ -85,10 +85,10 @@ const capabilities = [
   {
     eyebrow: 'prove it, then ship it',
     headline: 'Evals and cost work that hold the line',
-    body: "We don't ship on vibes. Every claim gets checked by a separate judge model — not the one that wrote the answer, not us. That discipline is how we cut model cost ~70% without losing quality, and how we took a generation pipeline from 39 seconds to 14.",
+    body: "We don't ship on vibes. Every claim gets checked by a separate judge model — not the one that wrote the answer, not us. That discipline is how we cut a frontier model's cost ~52% without losing quality — and took its generation pipeline from ~160 seconds to ~41, same model.",
     proof: [
-      '~70% model cost cut with quality held, gated by an independent judge',
-      '39.1s → 14.2s (~64% faster) via parallel section generation',
+      '~52% cost cut on the same frontier model (Opus 4.8), quality held, gated by an independent judge',
+      '≈160s → ≈41s (~74% faster) via parallel section generation, same model',
       'ICL eval framework: hallucination detection and model scorecards across Claude, GPT-4o, Mistral, SAP',
       'Teacher → local-MLX student distillation, plus DeepEval / Inspect / pydantic-evals rigs',
     ],
@@ -145,8 +145,8 @@ const numbers = [
   { n: '6', l: 'product families' },
   { n: '10+', l: 'model providers wired in' },
   { n: '~6 wks', l: 'idea to production' },
-  { n: '~70%', l: 'model cost cut, quality held' },
-  { n: '39.1s→14.2s', l: '~64% faster via parallel generation' },
+  { n: '~52%', l: 'frontier model cost cut, quality held' },
+  { n: '≈160s→≈41s', l: '~74% faster via parallel generation, same model' },
   { n: '~$16/mo', l: 'to park a frontier-level model on-prem' },
   { n: '4/4', l: 'crisis categories routed safely' },
 ]
@@ -163,7 +163,7 @@ const process = [
   ['Scope the wedge', 'We find the smallest version that proves the thing. One real workflow, real inputs, no kitchen sink. The expensive mistake is building the wrong thing well, so we cut hard before we cut code.'],
   ['Pick the model, prove it', "We choose the model for the job — frontier API or open weights on your own box — and gate it behind an independent judge from day one. If we can't measure it, we don't trust it."],
   ['Ship to prod in ~6 weeks', 'Not a demo, not a notebook. A thing in production handling real load, with the retry logic, fallbacks, and evals already wired in. Founders need something live, not something promising.'],
-  ['Harden until it holds', 'We tune cost, kill the slow paths, and lock the safety rails. ~70% cheaper, ~64% faster, crisis paths routed to humans — that work happens here. When we ship, it stays shipped.'],
+  ['Harden until it holds', 'We tune cost, kill the slow paths, and lock the safety rails. ~52% cheaper and ~74% faster on the same frontier model, crisis paths routed to humans — that work happens here. When we ship, it stays shipped.'],
 ]
 
 /* ------------------------------------------------------------- sections */

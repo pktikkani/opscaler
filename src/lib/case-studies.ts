@@ -257,112 +257,90 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'ai-application-cost-reduction',
-    title: 'Cutting AI Application Cost ~70% While Holding Output Quality',
+    title: 'Making a Frontier Model ~52% Cheaper and ~74% Faster — Without Downgrading It',
     client: 'Document-generation AI application for a regulated life-sciences / CDMO workflow',
     category: 'AI & Machine Learning',
     summary:
-      'A long-form document-generation app defaulted every run to a premium frontier model. Right-sizing the default model plus parallel section generation cut model cost ~70% and end-to-end latency ~64% — with quality held at ≥0.85 parity (up to 1.0) on the production configuration, verified by an independent judge.',
-    goal: 'Reduce inference cost and latency for an LLM-powered long-document generator without losing output quality — by testing the untested assumption that the frontier model was required.',
+      'A long-form document-generation app ran every proposal as one long, serial call to a premium frontier model (Claude Opus 4.8) — accurate, but slow and expensive. Rather than swap the model out for a cheaper one, we kept Opus 4.8 and re-engineered how we call it: splitting each document into independent section groups generated concurrently. On the same frontier model, that cut cost ~52% and end-to-end latency ~74%, with output quality held — verified by an independent judge, not by the team that built it.',
+    goal: 'Cut cost and latency for an Opus 4.8-powered long-document generator without giving up the frontier model — the assumption we tested was not “do we need Opus?” but “are we calling Opus efficiently?”',
     outcome:
-      'Moving the default off the premium frontier model to a right-sized mid-tier model cut model spend ~70%; parallel section generation cut end-to-end latency ~64% (39.1 s → 14.2 s, mean of a six-workflow benchmark) and is provider-agnostic — it holds regardless of which model is used. Semantic parity against the premium baseline held at ≥0.85 (up to 1.0) on the production configuration.',
-    status: 'Implemented and benchmarked in production-representative testing.',
+      'Keeping Claude Opus 4.8 as the generation model and restructuring one long serial call into concurrent section groups cut per-proposal LLM cost ~52% (≈$0.87 → ≈$0.42, production runs) and end-to-end latency ~74% (≈160 s → ≈41 s). The win is in the call structure, not a model downgrade — the same frontier model, driven far more efficiently. Output quality held on the production configuration, verified by an independent judge.',
+    status: 'Implemented and measured on production runs.',
     date: 'Jun 2026',
     stats: [
-      { value: '~70%', label: 'Lower model cost (premium → right-sized mid-tier)' },
-      { value: '~64%', label: 'Faster via parallelism (39.1 s → 14.2 s, n=6 mean)' },
-      { value: '≥0.85', label: 'Semantic parity vs premium (up to 1.0)' },
+      { value: '~52%', label: 'Lower cost on the same frontier model (Opus 4.8)' },
+      { value: '~74%', label: 'Faster end-to-end (≈160 s → ≈41 s)' },
+      { value: 'Opus 4.8', label: 'Frontier model kept — not downgraded' },
       { value: 'Independent', label: 'Quality gated by a separate judge, not the team' },
     ],
     sections: [
       {
         heading: 'The problem',
         paragraphs: [
-          'The application generates long, structured technical documents (multi-section proposals with scope classification, costing, schedules, and rendered artifacts) from short free-text briefs. The first production version ran every generation on a premium frontier model. It worked — but it had two scaling problems.',
-          'Cost: at premium token rates ($5 / 1M input, $25 / 1M output), each long multi-section document was expensive, and cost scaled linearly with usage. At any real customer volume the unit economics did not hold. Latency: end-to-end generation averaged ~39 seconds per document — slow enough to hurt the interactive experience and to bottleneck batch/throughput use.',
-          'The naive assumption — “the frontier model is required for acceptable quality” — had never actually been tested. That assumption was the thing costing the most money.',
+          'The application generates long, structured technical documents — multi-section proposals with scope classification, costing, schedules, and rendered artifacts — from short free-text briefs. Generation ran on a premium frontier reasoning model (Claude Opus 4.8), and the output quality was exactly what the workflow needed. The model was not the problem. How we were calling it was.',
+          'Every proposal ran as one long, serial generation: a single call that produced the entire document end to end. That had two costs. Latency: a full run took on the order of ~160 seconds — slow enough to hurt the interactive experience and to bottleneck any batch use. Cost: at frontier token rates, an output-heavy proposal ran to roughly $0.87 in model spend, and because everything was generated in one monolithic pass, there was no way to bound or shape where that spend went.',
+          'The usual reflex here is to reach for a cheaper model. We deliberately did not. The question we tested was not “do we need Opus 4.8?” — the quality bar said we did — but “are we calling Opus 4.8 efficiently?” The answer was no.',
         ],
       },
       {
-        heading: 'The approach — four levers, applied together',
+        heading: 'The approach — re-engineer the call, keep the model',
         paragraphs: [
-          'We treated both how we call the model and which model we call as engineering optimizations, not defaults.',
+          'A long proposal is not one indivisible thing. It is a set of largely independent section groups — narrative, technical, and review content — that do not depend on each other to be written. The serial pipeline was generating them one after another anyway, paying for that ordering in wall-clock time.',
         ],
         bullets: [
-          'Parallel section generation. A long document is many independent sections. The first version generated them serially, so total latency was the sum of every section. We restructured the pipeline to generate sections concurrently, bounded by a configurable concurrency limit (an async semaphore), with partial-failure salvage so one slow or failed section never sinks the whole document. Wall-clock time dropped to roughly the slowest section instead of the sum — the single biggest latency win, and entirely provider-agnostic: it holds no matter which model you run.',
-          'Model right-sizing (tiering). Benchmark cheaper models on the actual task instead of assuming the premium model is mandatory. Establish the premium model’s output as the quality baseline, measure how close cheaper models land, then make the right-sized tier the default. This is the lever that drives the ~70% cost reduction.',
-          'Quality-gated regeneration. The right-sized model is the default; a deterministic quality check runs on its output, and only outputs that fail the check are regenerated. Spend follows difficulty — the hard cases get extra compute, the rest clear on the first pass — rather than paying a flat premium rate on every run.',
-          'Compute-once upstream stages. Deterministic upstream work (scope classification, scaffolding, costing) is computed once and passed forward as context rather than re-derived per section, keeping repeated work out of the model’s billing path.',
+          'Parallel section generation. We restructured the pipeline to generate the independent section groups concurrently on the same Opus 4.8 model, bounded by a configurable concurrency limit (an async semaphore), with a per-section timeout and partial-failure salvage so one slow or failed section never sinks the whole document. End-to-end time collapses from the sum of every section to roughly the slowest one.',
+          'Tighter, scoped calls instead of one monolith. Each concurrent call generates only its own section group against a shared, pre-computed context, rather than one giant call carrying the entire document in a single prompt/response. Shorter, focused generations — combined with prompt caching on the shared context across the concurrent calls — are what drove the per-proposal cost down, on the same model.',
+          'Compute-once upstream stages. Deterministic upstream work (scope classification, scaffolding, costing) is computed once and passed forward as shared context rather than re-derived, keeping repeated work out of the model’s billing path and making the shared prefix cacheable across the concurrent section calls.',
+          'No model downgrade. Every number below is on Claude Opus 4.8 before and after — the frontier model is held constant. The savings are entirely from how the model is invoked, not from trading quality for price.',
         ],
+      },
+      {
+        heading: 'The results',
+        paragraphs: [
+          'Measured on production runs of the same Opus 4.8 model, before vs after the parallel-section restructure. Same model, same quality bar — only the call structure changed.',
+        ],
+        table: {
+          columns: ['Metric', 'Before (serial Opus 4.8)', 'After (parallel Opus 4.8)', 'Change'],
+          rows: [
+            ['Per-proposal LLM cost', '≈$0.87', '≈$0.42', '−52%'],
+            ['End-to-end latency', '≈160 s', '≈41 s', '−74%'],
+            ['Generation model', 'Claude Opus 4.8', 'Claude Opus 4.8', 'unchanged'],
+          ],
+        },
       },
       {
         heading: 'Holding the bar on quality',
         paragraphs: [
-          'Every cost or latency win only counted if it survived two independent checks: a deterministic evaluator (structure, required sections, scope coverage), and a semantic parity judge (an independent LLM scoring candidate output against the premium baseline, 0–1).',
-        ],
-      },
-      {
-        heading: 'The results — cost',
-        paragraphs: [
-          'All numbers are from our six-workflow, multi-scope benchmark (means over the run). For an output-heavy long document, moving the default off the premium model to the right-sized mid-tier cut model spend by roughly 70%; workloads that safely run on the small model drop by nearly 99%. The cost reduction comes from the default-tier change; the quality-gated regeneration only adds compute on the minority of outputs that fail the deterministic check.',
-        ],
-        table: {
-          columns: ['Tier', 'Input $/1M', 'Output $/1M', 'Output-cost vs premium'],
-          rows: [
-            ['Premium frontier model (baseline)', '$5.00', '$25.00', '—'],
-            ['Mid-tier model', '$1.50', '$7.50', '−70%'],
-            ['Small model', '$0.10', '$0.30', '−98.8%'],
-          ],
-        },
-      },
-      {
-        heading: 'The results — latency',
-        paragraphs: [
-          'End-to-end generation dropped ~64% (39.1 s → 14.2 s, mean of the six-workflow benchmark), turning a sluggish interactive flow into a responsive one. Two effects stack here: the right-sized model returns faster per call, and — the durable, model-independent win — parallel section generation collapses many sequential calls into one bounded concurrent batch, so the document waits on its slowest section instead of the sum of all of them. The parallelism win holds regardless of which model is used; it is the engineering, not the model choice.',
-        ],
-        table: {
-          columns: ['Tier', 'Avg end-to-end latency'],
-          rows: [
-            ['Premium frontier model (baseline)', '39.1 s'],
-            ['Small model', '17.4 s'],
-            ['Mid-tier model', '14.2 s'],
-          ],
-        },
-      },
-      {
-        heading: 'The results — quality held',
-        bullets: [
-          'Deterministic checks: the cheaper tiers matched the premium model’s structural quality on the benchmark (identical pass profile on the scored set).',
-          'Semantic parity vs the premium baseline (independent judge, 0–1 scale): ≥0.85 on the production configuration, ranging up to 1.0 on multiple cases. The right-sized model’s documents were judged substantively equivalent to the premium model’s the large majority of the time — and where an output diverged, the deterministic quality check caught it and triggered regeneration.',
-          'Net effect: ~70% lower model cost (premium → right-sized default), ~64% faster generation (parallelism, provider-agnostic), with output quality held at ≥0.85 parity (up to 1.0) against the original premium model — verified by an independent judge, not by the team that built it.',
+          'Because the model never changed, the risk was not “is the cheaper model good enough” — it was “did splitting one call into concurrent section groups degrade coherence or coverage?” Every cost and latency win only counted if it survived two independent checks: a deterministic evaluator (structure, required sections, scope coverage) and a semantic parity judge (an independent LLM scoring the restructured output against the original serial-Opus output). The parallel output held the bar — verified by an independent judge, not by the team that built it.',
         ],
       },
       {
         heading: 'Why it worked (and why teams miss it)',
         bullets: [
-          'Serial generation was the hidden latency tax. Generating independent sections one after another made total time the sum of every call. Concurrency made it the slowest call — same model, same output, dramatically less waiting.',
-          'The default model was the expensive mistake. The single biggest cost lever was an untested assumption (“we need the frontier model”). Measuring it was cheaper than paying for it.',
-          'Difficulty-proportional spend beats flat-rate. A quality-gated regeneration adds compute only on outputs that fail a deterministic check — typically a minority — instead of paying a premium rate on every run.',
-          'Compute deterministic work once. Upstream stages that don’t need the model (scope classification, scaffolding, costing) should be derived once and passed forward as context, not recomputed per section.',
-          'Trust requires independent verification. Cost and latency wins are only real if an independent quality gate confirms output didn’t degrade — so the savings are defensible to a customer, not just to ourselves.',
+          'Serial generation was a self-imposed tax. Writing independent section groups one after another made total time the sum of every call and forced one monolithic, expensive prompt/response. Concurrency made latency the slowest call; scoping made each call cheaper — same model, same output quality.',
+          'The instinct to downgrade the model is often the wrong lever. The most defensible win here was not swapping Opus 4.8 out — it was calling it efficiently. That keeps frontier quality and still roughly halves the cost.',
+          'Bounded concurrency with salvage, not naive fan-out. A semaphore caps parallelism, a per-section timeout stops a single slow call from stalling the document, and partial-failure salvage keeps a completed document even if one section needs a retry.',
+          'Compute deterministic work once. Upstream stages that don’t need the model (scope classification, scaffolding, costing) are derived once and passed as shared, cacheable context — not recomputed or re-sent per call.',
+          'Trust requires independent verification. Cost and latency wins are only real if an independent quality gate confirms the restructure didn’t degrade output — so the savings are defensible to a customer, not just to ourselves.',
         ],
       },
       {
         heading: 'Transferable playbook',
         paragraphs: [
-          'For any LLM-powered application that generates multi-part output and defaults to a premium model:',
+          'For any LLM-powered application generating long, multi-part output on a frontier model — before you consider downgrading the model:',
         ],
         bullets: [
-          'Parallelize independent calls. If your output has independent sections/units, generate them concurrently (bounded by a semaphore) with partial-failure salvage. Latency goes from sum-of-calls to slowest-call — the biggest, most provider-agnostic win, and it survives any future model change.',
-          'Baseline the premium model’s output on your real task and freeze it as the quality reference.',
-          'Benchmark cheaper tiers against that baseline on cost, latency, and an independent quality score — not vibes — then make the right-sized tier the default.',
-          'Add a quality-gated regeneration: run the default tier, and regenerate only the outputs that fail a deterministic check.',
-          'Compute deterministic / repeated upstream stages once and pass them as context, out of the model’s billing path.',
-          'Gate every saving behind an independent evaluator so quality parity is provable.',
+          'Check the call structure first. If your output has independent sections, one long serial generation is likely costing you both latency and money that a downgrade would only partly recover.',
+          'Parallelize independent section groups on the same model, bounded by a semaphore, with per-section timeouts and partial-failure salvage. Latency goes from sum-of-calls to slowest-call.',
+          'Scope each call and share a pre-computed context so prompt caching applies across the concurrent calls — this is where the cost drop comes from without touching the model.',
+          'Compute deterministic / repeated upstream stages once and pass them as shared context, out of the model’s billing path.',
+          'Freeze the original frontier output as the quality reference and gate every change behind an independent evaluator, so parity is provable.',
+          'Only after that, if the numbers still demand it, evaluate a right-sized model — as a second, separately-verified step, not the first reflex.',
         ],
       },
     ],
     footnote:
-      'Anonymized engineering case study; client, product, and proprietary system details are intentionally omitted. Figures are from controlled internal benchmarks on a six-workflow, multi-scope test set; absolute results vary by workload, prompt design, and model availability.',
+      'Anonymized engineering case study; client, product, and proprietary system details are intentionally omitted. Cost and latency figures are from production runs of Claude Opus 4.8 before and after the parallel-section restructure; absolute results vary by proposal size, workload, retries, and prompt design.',
   },
 ]
 

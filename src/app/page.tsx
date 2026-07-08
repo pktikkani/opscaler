@@ -16,7 +16,7 @@ const services = [
   {
     num: '02',
     title: 'Evaluation & Observability',
-    description: 'Trust nothing unmeasured. Independent multi-judge panels, model scorecards, and hallucination detection with DeepEval, Inspect, and pydantic-evals. Proof: cut model cost ~70% with quality held, gated by a separate judge model, not the team.',
+    description: 'Trust nothing unmeasured. Independent multi-judge panels, model scorecards, and hallucination detection with DeepEval, Inspect, and pydantic-evals. Proof: cut a frontier model’s cost ~52% and latency ~74% with quality held, gated by a separate judge model, not the team.',
     href: '/services#evals',
   },
   {
@@ -35,7 +35,7 @@ const services = [
 
 const stats = [
   { value: 'Parity', label: 'Local 32B vs Claude Opus 4.8' },
-  { value: '~70%', label: 'Model cost cut, quality held' },
+  { value: '~52%', label: 'Frontier model cost cut, quality held' },
   { value: '4/4', label: 'Crisis categories routed to a human' },
   { value: '~$16/mo', label: 'Frontier-level model, on-prem' },
 ]
