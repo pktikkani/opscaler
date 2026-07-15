@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: '%s - OpScaler',
     default: 'OpScaler - An AI studio for founders',
   },
-  description: 'OpScaler is an AI studio that helps founders own, prove, and ship real AI: model fine-tuning and customization, evaluation and observability, AI safety and alignment, sovereign/private AI infrastructure, and AI governance and compliance - applied to voice, RAG, agents, and generative media. A small, senior AI studio out of Wyoming, US.',
+  description: 'OpScaler is an AI studio that builds production AI systems with the right ownership model, data controls, auditability, and enterprise guardrails: model fine-tuning and customization, evaluation and observability, AI safety and alignment, sovereign/private AI infrastructure, and AI governance and compliance - applied to voice, RAG, agents, and generative media. A small, senior AI studio.',
   keywords: ['Model Fine-Tuning', 'LLM Evaluation', 'AI Observability', 'AI Safety', 'AI Alignment', 'Sovereign AI', 'Private AI', 'On-Prem LLM', 'AI Governance', 'AI Compliance', 'RAG', 'Voice AI', 'Multi-Agent Systems', 'Generative Media', 'AI Studio', 'LLM', 'Machine Learning', 'Startup', 'United States'],
   authors: [{ name: 'OpScaler', url: baseUrl }],
   creator: 'OpScaler',

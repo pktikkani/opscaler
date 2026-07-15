@@ -26,7 +26,7 @@ const services = [
     num: '02',
     title: 'Evaluation & Observability',
     tagline: 'Trust nothing unmeasured.',
-    description: 'Vibes are not a metric and self-grading is not a test. We stand up independent judge panels, model scorecards, and hallucination detection so every claim about quality is checked by something other than the team that shipped it. Proof: we cut model cost roughly 70% with quality held flat — the swap was gated by a separate judge model, not by opinion.',
+    description: 'Vibes are not a metric and self-grading is not a test. We stand up independent judge panels, model scorecards, and hallucination detection so every claim about quality is checked by something other than the team that shipped it. Proof: we cut a frontier model’s cost ~52% and latency ~74% while maintaining quality — gated by a separate judge model, not by opinion.',
     capabilities: [
       'Independent multi-judge evaluation panels',
       'Model scorecards & regression tracking',
@@ -159,10 +159,10 @@ export default function Services() {
               Disciplines
             </p>
             <h1 className="mt-4 max-w-[640px] font-display text-4xl font-extrabold tracking-[-0.03em] sm:text-5xl md:text-6xl md:leading-[1.05]">
-              Own it. Prove it. Ship it.
+              Design it. Prove it. Ship it.
             </h1>
             <p className="mt-6 max-w-[520px] text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              We build AI you can own — frontier-level models on hardware you control, no per-token bill,
+              We design AI you can own — frontier-level models on hardware you control, no per-token bill,
               no data egress. Every claim is checked by a separate judge model, not by us. Then we ship it
               into regulated, money-on-the-line reality. Here are the disciplines behind that, rare ones first.
             </p>

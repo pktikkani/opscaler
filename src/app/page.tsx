@@ -10,7 +10,7 @@ const services = [
   {
     num: '01',
     title: 'Model Fine-Tuning & Customization',
-    description: 'Distillation plus LoRA/QLoRA to reach frontier parity on your domain, on open weights you keep. Proof: a local OLMo-3.1-32B + LoRA reached parity with Claude Opus 4.8 on our hardest in-domain workflows.',
+    description: 'Distillation plus LoRA/QLoRA to bring open-weight models you retain to frontier-level performance in your domain. Proof: a local OLMo-3.1-32B with LoRA matched Claude Opus 4.8 on our toughest in-domain workflows.',
     href: '/services#fine-tuning',
   },
   {
@@ -28,7 +28,7 @@ const services = [
   {
     num: '04',
     title: 'Sovereign / Private AI',
-    description: 'The full agent loop — reasoning, tool-calling over MCP, memory, RAG, even voice — on open models running on a box you control. No egress, fixed cost, MLX / vLLM / llama.cpp. Proof: a self-hosted ~32B model at frontier level, parked for ~$16/mo.',
+    description: 'The full agent loop, including reasoning, MCP-based tool use, memory, RAG, and voice, on open models running in infrastructure you control. No egress, fixed cost, with MLX, vLLM, or llama.cpp. Proof: a self-hosted ~32B model delivered frontier-level performance for about $16/month.',
     href: '/services#sovereign',
   },
 ]
@@ -41,7 +41,7 @@ const stats = [
 ]
 
 export const metadata: Metadata = {
-  description: 'OpScaler is a small, senior AI studio. We fine-tune, evaluate, secure, and govern AI you own, prove it with an independent judge model, and ship it into regulated reality. Own it. Prove it. Ship it.',
+  description: 'OpScaler is a small, senior AI studio building production AI systems with the right ownership model, data controls, auditability, and enterprise guardrails. We design it, prove it with an independent judge model, and ship it into regulated reality. Design it. Prove it. Ship it.',
 }
 
 export default function Home() {
@@ -61,17 +61,17 @@ export default function Home() {
               // an AI studio for founders
             </p>
             <h1 className="mt-5 max-w-[700px] font-display text-5xl font-black tracking-[-0.04em] leading-[0.95] sm:text-7xl md:text-8xl">
-              Own it.
+              Design it.
               <br />
               Prove it.
               <br />
               <span style={{ color: 'var(--accent-text)' }}>Ship it.</span>
             </h1>
             <p className="mt-6 max-w-[520px] text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              A small, senior AI studio that runs frontier-level models on hardware
-              you own — no per-token bill, no data egress — proves every claim
-              with a separate judge model instead of vibes, and ships into
-              regulated, money-on-the-line reality. When we ship, it stays shipped.
+              Production AI systems with the right ownership model, data controls,
+              auditability, and enterprise guardrails. We prove every claim with a
+              separate judge model instead of vibes, and ship into regulated,
+              money-on-the-line reality. When we ship, it stays shipped.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link
@@ -293,14 +293,14 @@ export default function Home() {
                 Ready?
               </p>
               <h2 className="relative mt-4 font-display text-3xl font-extrabold tracking-[-0.03em] sm:text-4xl">
-                Own it. Prove it.
+                Design it. Prove it.
                 <br />
                 Ship it.
               </h2>
               <p className="relative mt-3 text-[15px]" style={{ color: 'var(--text-secondary)' }}>
-                A small, senior team out of Wyoming — the people who design it
-                build it, no bench, no handoff. Idea to production in ~6 weeks,
-                then hardened. No bloat, no BS. We respond within 24 hours.
+                A small, senior team — the people who design it build it, no bench,
+                no handoff. Idea to production in about six weeks, then hardened.
+                No excess, no compromise. We respond within 24 hours.
               </p>
               <div className="relative mt-7">
                 <Link

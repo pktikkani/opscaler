@@ -195,8 +195,8 @@ function Hero() {
           <p className="mt-6 max-w-2xl text-lg leading-relaxed sm:text-xl" style={{ color: 'var(--text-secondary)' }}>
             A lean AI studio for founders. Voice agents that take the payment. RAG
             products people actually use. Image pipelines, agent swarms, and the
-            whole agent loop running on your own box. Idea to production in six
-            weeks — and when we ship, it stays shipped.
+            whole agent loop running in your own infrastructure. Idea to production
+            in six weeks — and when we ship, it stays shipped.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <Link href="/contact" className="rounded-full px-6 py-3 text-sm font-semibold text-white transition-colors" style={{ background: 'var(--accent)' }}>
@@ -212,12 +212,15 @@ function Hero() {
   )
 }
 
-function Manifesto() {
+function Standard() {
   return (
     <section className="py-16 sm:py-20">
       <Container>
         <FadeIn className="max-w-3xl">
           <Eyebrow>// the standard</Eyebrow>
+          <p className="mt-6 font-display text-2xl font-bold tracking-tight sm:text-3xl">
+            A small, senior studio for startups that ship.
+          </p>
           <div className="mt-6 space-y-6 text-lg leading-relaxed sm:text-xl" style={{ color: 'var(--text-secondary)' }}>
             <p style={{ color: 'var(--text-primary)' }}>
               Most AI work is a demo. A glossy clip, a staged prompt, a slide that
@@ -226,45 +229,25 @@ function Manifesto() {
               edge cases nobody wrote down first.
             </p>
             <p>
-              We&rsquo;ve been heads-down on this for years, not months. The
-              founders still write code every day. That&rsquo;s not a humblebrag —
-              it&rsquo;s the whole point. You can&rsquo;t fake the hours. Around
-              130 AI/ML builds. Six product families. More than ten model
-              providers wired in and load-tested. The depth shows up in the parts
-              nobody screenshots: the retry logic, the fallback model, the eval
-              that caught the regression before the customer did.
+              OpScaler is a small, senior AI studio, built for startups that need
+              to ship. Pavan Tikkani and Karthik Sethupathy founded it and stay
+              hands-on — no account managers, no handoff to a junior bench, just
+              the people who designed it building it. We&rsquo;ve been heads-down
+              on this for years, not months. Around 130 AI/ML builds. Six product
+              families. More than ten model providers wired in and load-tested.
+              The depth shows up in the parts nobody screenshots: the retry logic,
+              the fallback model, the eval that caught the regression before the
+              customer did.
             </p>
             <p>
-              <span style={{ color: 'var(--accent-text)' }} className="font-mono text-base">// no bloat, no BS.</span>{' '}
               We pick the smallest thing that works, ship it fast, and harden it
-              until it doesn&rsquo;t break. The flashy part is easy. We&rsquo;re
-              here for the part that has to run on a Tuesday at 3am.
+              until it doesn&rsquo;t break. Idea to production in roughly six weeks,
+              then we keep it standing. The model providers change, the frameworks
+              churn, the hype cycle resets every quarter — we&rsquo;ve shipped
+              through all of it. The flashy part is easy. We&rsquo;re here for the
+              part that has to run on a Tuesday at 3am.
             </p>
           </div>
-        </FadeIn>
-      </Container>
-    </section>
-  )
-}
-
-function WhoWeAre() {
-  return (
-    <section className="py-16 sm:py-20">
-      <Container>
-        <FadeIn className="max-w-3xl">
-          <Eyebrow>// who builds this</Eyebrow>
-          <p className="mt-4 font-display text-2xl font-bold tracking-tight sm:text-3xl">
-            A small, senior studio for startups that ship.
-          </p>
-          <p className="mt-5 text-[15px] leading-relaxed sm:text-lg" style={{ color: 'var(--text-secondary)' }}>
-            OpScaler is a small, senior AI studio out of Wyoming, built for startups
-            that need to ship. Pavan Tikkani and Karthik Sethupathy founded it,
-            and still push code daily — no account managers, no handoff to a
-            junior bench, just the people who designed it building it. We take an
-            idea to production in roughly six weeks, then keep it standing. The
-            model providers change, the frameworks churn, the hype cycle resets
-            every quarter. We&rsquo;ve shipped through all of it.
-          </p>
         </FadeIn>
       </Container>
     </section>
@@ -438,7 +421,7 @@ function Closing() {
                 who&rsquo;ll still be on the other end when it matters — not a
                 bench, not a handoff. Bring the messy version; we&rsquo;ll find
                 the smallest thing that works and ship it hard.{' '}
-                <span style={{ color: 'var(--accent-text)' }} className="font-mono">// no bloat, no BS.</span>{' '}
+                <span style={{ color: 'var(--accent-text)' }} className="font-mono">// no excess, no compromise.</span>{' '}
                 When we ship, it stays shipped.
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
@@ -461,8 +444,7 @@ export default function InferenceLogPage() {
   return (
     <SiteLayout>
       <Hero />
-      <Manifesto />
-      <WhoWeAre />
+      <Standard />
       <Capabilities />
       <Flagships />
       <Numbers />

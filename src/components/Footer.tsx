@@ -42,7 +42,7 @@ export function Footer() {
               <Logo />
             </Link>
             <p className="mt-4 text-sm" style={{ color: 'var(--text-tertiary)' }}>
-              Own it. Prove it. Ship it.
+              Design it. Prove it. Ship it.
             </p>
           </div>
           {footerLinks.map((group) => (

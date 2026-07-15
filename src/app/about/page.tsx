@@ -22,10 +22,10 @@ const founders = [
 ]
 
 const values = [
-  { title: 'Own it', description: 'We run frontier-level models on hardware you control. No per-token bill, no data egress — you own the model and the data.' },
+  { title: 'Design it', description: 'We design frontier-level systems on hardware you control. No per-token bill, no data egress — you own the model and the data.' },
   { title: 'Prove it', description: 'Never ship on vibes. Every claim is checked by a separate judge model — independent evals, not self-grading.' },
   { title: 'Ship it', description: 'Into regulated, money-on-the-line reality — fintech voice payments, life-sciences CMC — not demos. When we ship, it stays shipped.' },
-  { title: 'Stay lean', description: 'A small, senior team — the people who design it build it. No account managers, no layers of process, no bench to hand you off to. No bloat, no BS.' },
+  { title: 'Stay lean', description: 'A small, senior team — the people who design it are the ones who build it. No account managers, no layers of process, no bench to hand you off to. No excess, no compromise.' },
   { title: 'Move in weeks', description: 'Idea to production in about six weeks, then hardened. Fast doesn’t mean sloppy — we write code your next engineer will thank you for.' },
   { title: 'Slow down to speed up', description: 'AI writes code at warp speed. More is generated than ever, and less of it reviewed. So we slow down where it counts — read the code, test the edges, gate it behind a separate judge — because that’s what makes the speed safe to keep.' },
   { title: 'Keep learning', description: 'The frontier moves weekly. We stay current on models, tooling, and technique so your stack stays sharp, not legacy.' },
@@ -33,7 +33,7 @@ const values = [
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Meet the team behind OpScaler — a small, senior AI studio built on the hard disciplines: fine-tuning, evals, AI safety, sovereign on-prem inference, and governance. Own it, prove it, ship it.',
+  description: 'Meet the team behind OpScaler — a small, senior AI studio built on the hard disciplines: fine-tuning, evals, AI safety, sovereign on-prem inference, and governance. Design it, prove it, ship it.',
 }
 
 export default function About() {

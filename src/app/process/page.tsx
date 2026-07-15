@@ -38,20 +38,20 @@ const phases = [
     num: '03',
     title: 'Ship & harden',
     duration: 'Week 6+',
-    description: 'Deployment is where most AI dies. AI writes code at warp speed — so this is where we slow down to speed up: read what shipped, test the edges, and gate every release behind the independent judge, with retries, fallbacks, and safety guardrails. Then we harden for cost and latency — roughly 70% cheaper and 64% faster on real workloads. Crisis and edge paths route to a human. When we ship, it stays shipped.',
+    description: 'Deployment is where most AI dies. AI writes code at warp speed — so this is where we slow down to speed up: read what shipped, test the edges, and gate every release behind the independent judge, with retries, fallbacks, and safety guardrails. Then we harden for cost and latency — roughly 52% cheaper and 74% faster on real workloads. Crisis and edge paths route to a human. When we ship, it stays shipped.',
     includes: [
       'Slow down to speed up — nothing ships unread or unproven',
       'Production deploy with retries and fallbacks',
       'Independent-judge gating on every release',
       'Safety guardrails and crisis paths routed to humans',
-      'Cost hardening — ~70% cheaper, quality held',
-      'Latency hardening — ~64% faster',
+      'Cost hardening — ~52% cheaper, quality held',
+      'Latency hardening — ~74% faster',
     ],
   },
 ]
 
 const principles = [
-  { title: 'Own it', description: 'Frontier-level models on hardware you control. No per-token bill that scales against your success, no data leaving the building.' },
+  { title: 'Design it', description: 'Frontier-level systems on hardware you control. No per-token bill that scales against your success, no data leaving the building.' },
   { title: 'Prove it', description: 'Every claim is checked by a separate judge model. We trust nothing unmeasured — not vibes, not self-grading, not our own opinion.' },
   { title: 'Ship it', description: 'Into regulated, money-on-the-line reality — not demos. Retries, fallbacks, and human-in-the-loop where the regulator requires it.' },
   { title: 'Transparent', description: 'Open communication builds trust. Weekly demos against the eval bar mean you always know exactly where things stand.' },
@@ -59,7 +59,7 @@ const principles = [
 
 export const metadata: Metadata = {
   title: 'Our Process',
-  description: 'How OpScaler builds AI you can own, prove, and ship. Three phases: scope the wedge and pick the model, build with an independent eval harness from day one, then ship hardened behind a separate judge — idea to production in ~6 weeks.',
+  description: 'How OpScaler builds AI you can design, prove, and ship. Three phases: scope the wedge and pick the model, build with an independent eval harness from day one, then ship hardened behind a separate judge — idea to production in ~6 weeks.',
 }
 
 export default function Process() {
@@ -73,7 +73,7 @@ export default function Process() {
               Process
             </p>
             <h1 className="mt-4 max-w-[600px] font-display text-4xl font-extrabold tracking-[-0.03em] sm:text-5xl md:text-6xl md:leading-[1.05]">
-              Own it. Prove it. Ship it.
+              Design it. Prove it. Ship it.
             </h1>
             <p className="mt-6 max-w-[560px] text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               How we build AI that survives contact with production. Three phases, about
