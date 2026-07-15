@@ -16,7 +16,7 @@ const founders = [
   {
     name: 'Karthik Sethupathy',
     role: 'Co-Founder',
-    bio: 'Seasoned technologist who built his career across leading Bay Area tech companies. Owns the AI-infrastructure backbone: sovereign, on-prem model serving on hardware the customer controls (MLX, vLLM, llama.cpp), the full agent loop over MCP, and zero-egress deployments that run at fixed cost. Sharp, detail-oriented approach to standing up frontier-level models on a box you own.',
+    bio: 'Seasoned technologist who built his career across leading technology companies. Owns the AI-infrastructure backbone: sovereign, on-prem model serving on hardware the customer controls, the full agent loop, and zero-egress deployments that run at fixed cost. Sharp, detail-oriented approach to standing up frontier-level models in infrastructure you control.',
     image: '/team/karthik.png',
   },
 ]
