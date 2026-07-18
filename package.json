@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check": "python3 scripts/check_discipline.py"
   },
   "dependencies": {
     "clsx": "^2.1.1",
