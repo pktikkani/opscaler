@@ -5,21 +5,7 @@ import Link from 'next/link'
 import { SiteLayout } from '@/components/SiteLayout'
 import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
-
-const founders = [
-  {
-    name: 'Pavan Tikkani',
-    role: 'Co-Founder',
-    bio: 'Nearly two decades in global technology, now focused on the hard end of AI systems: fine-tuning and distilling open-weight models to frontier parity, LoRA/QLoRA on domain data, and independent multi-judge evals so quality is measured, not asserted. Known for simplifying complex challenges and an unwavering passion for clean, elegant code.',
-    image: '/team/pavan.png',
-  },
-  {
-    name: 'Karthik Sethupathy',
-    role: 'Co-Founder',
-    bio: 'Seasoned technologist who built his career across leading technology companies. Owns the AI-infrastructure backbone: sovereign, on-prem model serving on hardware the customer controls, the full agent loop, and zero-egress deployments that run at fixed cost. Sharp, detail-oriented approach to standing up frontier-level models in infrastructure you control.',
-    image: '/team/karthik.png',
-  },
-]
+import { founders, advisors, type Person } from '@/lib/team'
 
 const values = [
   { title: 'Design it', description: 'We design frontier-level systems on hardware you control. No per-token bill, no data egress — you own the model and the data.' },
@@ -30,6 +16,48 @@ const values = [
   { title: 'Slow down to speed up', description: 'AI writes code at warp speed. More is generated than ever, and less of it reviewed. So we slow down where it counts — read the code, test the edges, gate it behind a separate judge — because that’s what makes the speed safe to keep.' },
   { title: 'Keep learning', description: 'The frontier moves weekly. We stay current on models, tooling, and technique so your stack stays sharp, not legacy.' },
 ]
+
+function PersonCard({ person }: { person: Person }) {
+  return (
+    <div
+      className="rounded-2xl border p-8"
+      style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border-color)' }}
+    >
+      <div className="flex items-center gap-5">
+        <div
+          className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full border"
+          style={{ borderColor: 'var(--border-color)', background: 'var(--bg-primary)' }}
+        >
+          {person.image ? (
+            <Image
+              src={person.image}
+              alt={person.name}
+              fill
+              sizes="80px"
+              className="object-cover"
+            />
+          ) : (
+            <div
+              className="flex h-full w-full items-center justify-center font-display text-2xl font-bold"
+              style={{ color: 'var(--text-secondary)' }}
+            >
+              {person.name.split(' ').map((n) => n[0]).join('')}
+            </div>
+          )}
+        </div>
+        <div>
+          <h3 className="font-display text-xl font-bold">{person.name}</h3>
+          <p className="mt-1 text-sm font-medium" style={{ color: 'var(--accent-text)' }}>
+            {person.role}
+          </p>
+        </div>
+      </div>
+      <p className="mt-5 text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+        {person.bio}
+      </p>
+    </div>
+  )
+}
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -51,8 +79,8 @@ export default function About() {
             </h1>
             <div className="mt-8 max-w-[540px] space-y-5 text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               <p>
-                OpScaler is a small, senior AI studio, founded in the US by Pavan and
-                Karthik. We&apos;re not a generic dev shop that added an AI page &mdash;
+                OpScaler is a small, senior AI studio, founded in the US by Karthik
+                Sethupathy. We&apos;re not a generic dev shop that added an AI page &mdash;
                 our edge is depth in the hard disciplines: fine-tuning open-weight
                 models to frontier parity, independent evals, AI safety, sovereign
                 on-prem inference, and governance for regulated work.
@@ -72,61 +100,45 @@ export default function About() {
         <hr style={{ borderColor: 'var(--border-color)' }} />
       </div>
 
-      {/* Founders */}
+      {/* Team + advisors */}
       <section className="py-20">
         <Container>
-          <FadeIn>
-            <p className="font-mono text-xs font-medium uppercase tracking-[0.1em]" style={{ color: 'var(--accent-text)' }}>
-              Team
-            </p>
-            <h2 className="mt-4 font-display text-3xl font-extrabold tracking-[-0.03em] sm:text-4xl">
-              Founded by builders
-            </h2>
-          </FadeIn>
-
-          <FadeInStagger className="mt-12 grid gap-6 sm:grid-cols-2">
-            {founders.map((person) => (
-              <FadeIn key={person.name}>
-                <div
-                  className="rounded-2xl border p-8"
-                  style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border-color)' }}
-                >
-                  <div className="flex items-center gap-5">
-                    <div
-                      className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full border"
-                      style={{ borderColor: 'var(--border-color)', background: 'var(--bg-primary)' }}
-                    >
-                      {person.image ? (
-                        <Image
-                          src={person.image}
-                          alt={person.name}
-                          fill
-                          sizes="80px"
-                          className="object-cover"
-                        />
-                      ) : (
-                        <div
-                          className="flex h-full w-full items-center justify-center font-display text-2xl font-bold"
-                          style={{ color: 'var(--text-secondary)' }}
-                        >
-                          {person.name.split(' ').map((n) => n[0]).join('')}
-                        </div>
-                      )}
-                    </div>
-                    <div>
-                      <h3 className="font-display text-xl font-bold">{person.name}</h3>
-                      <p className="mt-1 text-sm font-medium" style={{ color: 'var(--accent-text)' }}>
-                        {person.role}
-                      </p>
-                    </div>
-                  </div>
-                  <p className="mt-5 text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                    {person.bio}
-                  </p>
-                </div>
+          <div className="grid gap-x-6 gap-y-16 sm:grid-cols-2">
+            <div>
+              <FadeIn>
+                <p className="font-mono text-xs font-medium uppercase tracking-[0.1em]" style={{ color: 'var(--accent-text)' }}>
+                  Team
+                </p>
+                <h2 className="mt-4 font-display text-3xl font-extrabold tracking-[-0.03em] sm:text-4xl">
+                  Founded by a builder
+                </h2>
               </FadeIn>
-            ))}
-          </FadeInStagger>
+              <FadeInStagger className="mt-12 grid gap-6">
+                {founders.map((person) => (
+                  <FadeIn key={person.name}>
+                    <PersonCard person={person} />
+                  </FadeIn>
+                ))}
+              </FadeInStagger>
+            </div>
+            <div>
+              <FadeIn>
+                <p className="font-mono text-xs font-medium uppercase tracking-[0.1em]" style={{ color: 'var(--accent-text)' }}>
+                  Advisors
+                </p>
+                <h2 className="mt-4 font-display text-3xl font-extrabold tracking-[-0.03em] sm:text-4xl">
+                  Advised by a builder
+                </h2>
+              </FadeIn>
+              <FadeInStagger className="mt-12 grid gap-6">
+                {advisors.map((person) => (
+                  <FadeIn key={person.name}>
+                    <PersonCard person={person} />
+                  </FadeIn>
+                ))}
+              </FadeInStagger>
+            </div>
+          </div>
         </Container>
       </section>
 

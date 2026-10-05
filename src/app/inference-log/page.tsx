@@ -230,8 +230,8 @@ function Standard() {
             </p>
             <p>
               OpScaler is a small, senior AI studio, built for startups that need
-              to ship. Pavan Tikkani and Karthik Sethupathy founded it and stay
-              hands-on — no account managers, no handoff to a junior bench, just
+              to ship. Karthik Sethupathy founded it and stays hands-on, with
+              Pavan Tikkani as technical advisor — no account managers, no handoff to a junior bench, just
               the people who designed it building it. We&rsquo;ve been heads-down
               on this for years, not months. Around 130 AI/ML builds. Six product
               families. More than ten model providers wired in and load-tested.
@@ -426,7 +426,7 @@ function Closing() {
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
                 <Link href="/contact" className="rounded-full px-6 py-3 text-sm font-semibold text-white transition-colors" style={{ background: 'var(--accent)' }}>
-                  Talk to the founders &rarr;
+                  Talk to the founder &rarr;
                 </Link>
                 <Link href="/case-studies" className="rounded-full border px-6 py-3 text-sm font-semibold" style={{ borderColor: 'var(--border-color)' }}>
                   Read the case studies

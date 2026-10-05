@@ -9,8 +9,8 @@ _Reverse-engineered from the repo as it stood on 2026-07-18. Describes reality, 
 
 ## What this is
 
-The public marketing site for **OpScaler** — a small senior AI studio (founders Pavan Tikkani
-+ Karthik Sethupathy). A multi-page Next.js site: home, about, services, case studies,
+The public marketing site for **OpScaler** — a small senior AI studio (founder Karthik Sethupathy;
+technical advisor Pavan Tikkani — team data lives in `src/lib/team.ts`). A multi-page Next.js site: home, about, services, case studies,
 process, a long-form "Inference Log" page, and a contact form that emails via Resend.
 
 **Positioning constraint (from project memory — enforce in copy):** OpScaler is an *AI studio

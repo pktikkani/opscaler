@@ -7,7 +7,8 @@ Next.js 16.2 site + a Resend-backed contact form).
 
 - Install: `npm install` (Node 20+).
 - Dev: `npm run dev` (http://localhost:3000).
-- Build (also the smoke check — no unit tests exist): `npm run build`.
+- Test: `npm test` (node:test, `tests/*.test.mjs` — team data only so far).
+- Build (also the smoke check): `npm run build`.
 - Lint: `npm run lint`. Discipline gate: `python3 scripts/check_discipline.py`.
 
 ## Positioning constraint (matters for ALL copy changes)

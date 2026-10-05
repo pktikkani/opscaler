@@ -1,6 +1,7 @@
 import { type Metadata } from 'next'
 
 import '@/styles/tailwind.css'
+import { founders } from '@/lib/team'
 
 const baseUrl = 'https://opscaler.com'
 
@@ -42,10 +43,7 @@ const organizationJsonLd = {
   url: baseUrl,
   description: 'AI studio specializing in model fine-tuning and customization, evaluation and observability, AI safety and alignment, sovereign/private AI infrastructure, and AI governance and compliance - applied to voice, RAG, agents, and generative media.',
   foundingDate: '2026',
-  founders: [
-    { '@type': 'Person', name: 'Pavan Tikkani', jobTitle: 'Co-Founder' },
-    { '@type': 'Person', name: 'Karthik Sethupathy', jobTitle: 'Co-Founder' },
-  ],
+  founders: founders.map((p) => ({ '@type': 'Person', name: p.name, jobTitle: p.role })),
   address: {
     '@type': 'PostalAddress',
     streetAddress: '30 N Gould St Ste #65050',

@@ -2,7 +2,7 @@
 
 **Build. Ship. Scale.**
 
-OpScaler is a US-based technology company that helps startups and small businesses turn ideas into products. Founded by [Pavan Tikkani](https://linkedin.com/in/pktikkani) and [Karthik Sethupathy](https://linkedin.com/in/karthiksethupathy).
+OpScaler is a US-based technology company that helps startups and small businesses turn ideas into products. Founded by [Karthik Sethupathy](https://linkedin.com/in/karthiksethupathy); [Pavan Tikkani](https://linkedin.com/in/pktikkani) is technical advisor.
 
 ## Services
 
