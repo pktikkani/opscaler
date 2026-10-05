@@ -110,7 +110,7 @@ export default function About() {
                   Team
                 </p>
                 <h2 className="mt-4 font-display text-3xl font-extrabold tracking-[-0.03em] sm:text-4xl">
-                  Founded by a builder
+                  Founded by an operator
                 </h2>
               </FadeIn>
               <FadeInStagger className="mt-12 grid gap-6">

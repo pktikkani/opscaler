@@ -230,7 +230,7 @@ function Standard() {
             </p>
             <p>
               OpScaler is a small, senior AI studio, built for startups that need
-              to ship. Karthik Sethupathy founded it and stays hands-on, with
+              to ship. Karthik Sethupathy founded it and runs it, with
               Pavan Tikkani as technical advisor — no account managers, no handoff to a junior bench, just
               the people who designed it building it. We&rsquo;ve been heads-down
               on this for years, not months. Around 130 AI/ML builds. Six product

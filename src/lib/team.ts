@@ -9,7 +9,7 @@ export const founders: Person[] = [
   {
     name: 'Karthik Sethupathy',
     role: 'Founder',
-    bio: 'Seasoned technologist who built his career across leading technology companies. Owns the AI-infrastructure backbone: sovereign, on-prem model serving on hardware the customer controls, the full agent loop, and zero-egress deployments that run at fixed cost. Sharp, detail-oriented approach to standing up frontier-level models in infrastructure you control.',
+    bio: 'Over twenty years running production SaaS infrastructure, including a decade as Senior Director of Technical Operations. Built and led global Technical Operations and SRE organizations: multi-region cloud architecture, datacenter-to-cloud migration, disaster recovery, incident response, and the compliance audits regulated customers require. Brings an operator’s discipline to keeping AI systems reliable in production.',
     image: '/team/karthik.png',
   },
 ]
